@@ -9,12 +9,17 @@ Autor:				Wagner Zanco
 //#include <delays.h>			//diretiva de compila??o
 #include "MCC18_18F4550.h"
 #include "Lcd_8bits.h"			//diretiva de compila??o
+#include <stdio.h>
+#include <stdlib.h>
+#include "eeprom.h"
 //********************************************************************
 //prot?tipos de fun??es
  void Inic_Regs (void);
  //********************************************************************
 void main(void)										//fun??o main					
 {	
+unsigned char read[25];								//buffer para leitura da eeprom
+unsigned char write[25];							//buffer para escrita na eeprom
 char buf [17] = {"Seja bem vindo!"};				//declara??o de vetor inicializado
 char buf02 [17] = {"   LCD 16 x 2"};				//declara??o de vetor inicializado
 int dly=0;											//declara??o de vari?vel local inicializada
@@ -44,6 +49,9 @@ int dly=0;											//declara??o de vari?vel local inicializada
 	EscInstLCD(0x0C);								//desativa cursor
 	while(TesteBusyFlag());							//espera LCD controller terminar de executar instru??o
 	while(1);										//loop infinito
+
+    EEPROM_Write_Block(0x00,strcpypgm2ram(write, "Ola Mundo"), 9); //escreve na eeprom
+    EEPROM_Read_Block(0x00, read, 4);							   //le da eeprom		
 }
 /*******************************************************************
 Esta funcao inicializa os resgistradores SFRs.*/
