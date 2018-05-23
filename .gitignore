@@ -1,2 +1,5 @@
 #configurações de usuário local
+*.DBK
+*.PWI
 /MPlab/TrabalhoN2Micro.X/nbproject/
+
