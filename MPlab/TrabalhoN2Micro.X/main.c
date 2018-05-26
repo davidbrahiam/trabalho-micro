@@ -12,6 +12,15 @@ Autor:				Wagner Zanco
 #include <stdio.h>
 #include <stdlib.h>
 #include "eeprom.h"
+
+#define col_1 PORTDbits.RD0
+#define col_2 PORTDbits.RD1
+#define col_3 PORTDbits.RD2
+#define col_4 PORTDbits.RD3
+#define row_1 PORTDbits.RD4
+#define row_2 PORTDbits.RD5
+#define row_3 PORTDbits.RD6
+#define row_4 PORTDbits.RD7
 //********************************************************************
 //prot?tipos de fun??es
  void Inic_Regs (void);
