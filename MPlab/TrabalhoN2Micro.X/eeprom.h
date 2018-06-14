@@ -8,6 +8,7 @@
 #include <p18f4550.h>
 #include <string.h>
 #include <EEP.h>
+#include <delays.h>
 
 void EEPROM_Write_Block( unsigned char address, unsigned char *data, unsigned char length)
 {

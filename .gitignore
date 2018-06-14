@@ -2,4 +2,6 @@
 *.DBK
 *.PWI
 /MPlab/TrabalhoN2Micro.X/nbproject/
-
+*.err
+./MPlab/TrabalhoN2Micro.X/build/*
+./MPlab/TrabalhoN2Micro.X/dist/*
