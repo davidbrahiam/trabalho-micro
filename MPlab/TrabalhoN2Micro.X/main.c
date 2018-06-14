@@ -12,6 +12,15 @@ Autor:				Wagner Zanco
 #include <stdio.h>
 #include <stdlib.h>
 #include "eeprom.h"
+
+#define col_1 PORTDbits.RD0
+#define col_2 PORTDbits.RD1
+#define col_3 PORTDbits.RD2
+#define col_4 PORTDbits.RD3
+#define row_1 PORTDbits.RD4
+#define row_2 PORTDbits.RD5
+#define row_3 PORTDbits.RD6
+#define row_4 PORTDbits.RD7
 //********************************************************************
 //prot?tipos de fun??es
  void Inic_Regs (void);
@@ -34,10 +43,14 @@ int dly=0;											//declara??o de vari?vel local inicializada
 		_Delay5ms();								//delay de 5ms
 	}
 //**********************************
+    EEPROM_Write_Block(0x00,strcpypgm2ram(write, "Ola Mundo!"), 10); //escreve na eeprom
+    EEPROM_Read_Block(0x00, read, sizeof(read));							   //le da eeprom
+//**********************************
 	EscInstLCD(0x01);								//limpa display e mostra cursor piscando na primeira posi??o da primmeira linha
 	while(TesteBusyFlag());							//espera LCD controller terminar de executar instru??o
 
-	EscStringLCD(buf);								//escreve string no LCD
+//	EscStringLCD(buf);								//escreve string no LCD
+    EscStringLCD(read);
 	while(TesteBusyFlag());							//espera LCD controller terminar de executar instru??o
 
 	EscInstLCD(0xC0);								//posiciona cursor na primeir aposic??o  da segunda linha
@@ -48,10 +61,7 @@ int dly=0;											//declara??o de vari?vel local inicializada
 
 	EscInstLCD(0x0C);								//desativa cursor
 	while(TesteBusyFlag());							//espera LCD controller terminar de executar instru??o
-	while(1);										//loop infinito
-
-    EEPROM_Write_Block(0x00,strcpypgm2ram(write, "Ola Mundo"), 9); //escreve na eeprom
-    EEPROM_Read_Block(0x00, read, 4);							   //le da eeprom		
+	while(1);										//loop infinito    		
 }
 /*******************************************************************
 Esta funcao inicializa os resgistradores SFRs.*/
