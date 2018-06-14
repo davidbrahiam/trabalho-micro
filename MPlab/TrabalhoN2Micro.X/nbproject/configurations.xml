@@ -6,11 +6,12 @@
                    projectFiles="true">
       <itemPath>MCC18_18F4550.h</itemPath>
       <itemPath>Lcd_8bits.H</itemPath>
+      <itemPath>eeprom.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
                    projectFiles="true">
-      <itemPath>../../../../../../../../Program Files (x86)/Microchip/mplabc18/v3.47/bin/LKR/18f4550_g.lkr</itemPath>
+      <itemPath>../../../../../../Program Files/Microchip/mplabc18/v3.47/bin/LKR/18f4550_g.lkr</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -27,6 +28,7 @@
   <sourceRootList>
     <Elem>../../../../../../../../Program Files (x86)/Microchip/mplabc18/v3.47/bin/LKR</Elem>
     <Elem>.</Elem>
+    <Elem>../../../../../../Program Files/Microchip/mplabc18/v3.47/bin/LKR</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
