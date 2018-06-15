@@ -11,7 +11,8 @@ Autor:				Wagner Zanco
 #include "Lcd_8bits.h"			//diretiva de compila??o
 #include <stdio.h>
 #include <stdlib.h>
-#include "eeprom.h"
+//#include "eeprom.h"
+#include "users.h"
 
 #define col_1 PORTDbits.RD0
 #define col_2 PORTDbits.RD1
@@ -26,11 +27,11 @@ Autor:				Wagner Zanco
  void Inic_Regs (void);
  //********************************************************************
 void main(void)										//fun??o main					
-{	
-unsigned char read[25];								//buffer para leitura da eeprom
-unsigned char write[25];							//buffer para escrita na eeprom
-char buf [17] = {"Seja bem vindo!"};				//declara??o de vetor inicializado
-char buf02 [17] = {"   LCD 16 x 2"};				//declara??o de vetor inicializado
+{
+unsigned char *read;
+unsigned char address;
+unsigned char buf [17] = "USER";                       //declara??o de vetor inicializado
+unsigned char buf02 [17] = "SENHA";                  //declara??o de vetor inicializado
 int dly=0;											//declara??o de vari?vel local inicializada
 //**********************************
 	Inic_Regs ();									//configurar SFRs
@@ -38,19 +39,19 @@ int dly=0;											//declara??o de vari?vel local inicializada
 	TestPixelsLCD();								//teste no LCD - acende todos os pixels.
 //**********************************
 //delay de 3 segundos
-	for(dly=0;dly<600;dly++)						//comando de itera??o
+	for(dly=0;dly<100;dly++)						//comando de itera??o
 	{
 		_Delay5ms();								//delay de 5ms
 	}
 //**********************************
-    EEPROM_Write_Block(0x00,strcpypgm2ram(write, "Ola Mundo!"), 10); //escreve na eeprom
-    EEPROM_Read_Block(0x00, read, sizeof(read));							   //le da eeprom
-//**********************************
-	EscInstLCD(0x01);								//limpa display e mostra cursor piscando na primeira posi??o da primmeira linha
+    EscInstLCD(0x01);								//limpa display e mostra cursor piscando na primeira posi??o da primmeira linha
 	while(TesteBusyFlag());							//espera LCD controller terminar de executar instru??o
+//EEPROM_Read_Block(0x40, read, 8);
+saveNewUser(buf, buf02);
+//authenticateUser(buf, buf02);
 
 //	EscStringLCD(buf);								//escreve string no LCD
-    EscStringLCD(read);
+    EscStringLCD(address);
 	while(TesteBusyFlag());							//espera LCD controller terminar de executar instru??o
 
 	EscInstLCD(0xC0);								//posiciona cursor na primeir aposic??o  da segunda linha

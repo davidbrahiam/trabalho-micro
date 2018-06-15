@@ -25,7 +25,7 @@ void EEPROM_Read_Block( unsigned char address, unsigned char *data, unsigned cha
     unsigned char i = 0;
     for( i=0; i< length; i++ )
     {
-      *(data+i) = Read_b_eep(address+i);
+      data[i] = Read_b_eep(address+i);
       Delay10TCYx(1);
     }
 }
