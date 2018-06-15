@@ -8,6 +8,7 @@
       <itemPath>Lcd_8bits.H</itemPath>
       <itemPath>eeprom.h</itemPath>
       <itemPath>stdint.h</itemPath>
+      <itemPath>Keyboard_HEX.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -18,6 +19,7 @@
                    projectFiles="true">
       <itemPath>main.c</itemPath>
       <itemPath>Lcd_8bits.c</itemPath>
+      <itemPath>Keyboard_HEX.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

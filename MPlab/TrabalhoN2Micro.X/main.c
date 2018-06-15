@@ -32,6 +32,7 @@ unsigned char read[25];								//buffer para leitura da eeprom
 unsigned char write[25];							//buffer para escrita na eeprom
 char buf [17] = {"Seja bem vindo!"};				//declara??o de vetor inicializado
 char buf02 [17] = {"   LCD 16 x 2"};				//declara??o de vetor inicializado
+unsigned char x = 0x00;
 int dly=0;											//declara??o de vari?vel local inicializada
 //**********************************
 	Inic_Regs ();									//configurar SFRs
@@ -39,7 +40,7 @@ int dly=0;											//declara??o de vari?vel local inicializada
 	TestPixelsLCD();								//teste no LCD - acende todos os pixels.
 //**********************************
 //delay de 3 segundos
-	for(dly=0;dly<600;dly++)						//comando de itera??o
+	for(dly=0;dly<100;dly++)						//comando de itera??o
 	{
 		_Delay5ms();								//delay de 5ms
 	}
@@ -51,18 +52,54 @@ int dly=0;											//declara??o de vari?vel local inicializada
 	while(TesteBusyFlag());							//espera LCD controller terminar de executar instru??o
 
 //	EscStringLCD(buf);								//escreve string no LCD
-    EscStringLCD(read);
-	while(TesteBusyFlag());							//espera LCD controller terminar de executar instru??o
+//    EscStringLCD(read);
+//	while(TesteBusyFlag());							//espera LCD controller terminar de executar instru??o
 
-	EscInstLCD(0xC0);								//posiciona cursor na primeir aposic??o  da segunda linha
-	while(TesteBusyFlag());							//espera LCD controller terminar de executar instru??o
-
-	EscStringLCD(buf02);							//escreve string no LCD					
-	while(TesteBusyFlag());							//espera LCD controller terminar de executar instru??o
-
-	EscInstLCD(0x0C);								//desativa cursor
-	while(TesteBusyFlag());							//espera LCD controller terminar de executar instru??o
-	while(1);										//loop infinito    		
+//	EscInstLCD(0xC0);								//posiciona cursor na primeir aposic??o  da segunda linha
+//	while(TesteBusyFlag());							//espera LCD controller terminar de executar instru??o
+//
+//	EscStringLCD(buf02);							//escreve string no LCD					
+//	while(TesteBusyFlag());							//espera LCD controller terminar de executar instru??o
+//
+//	EscInstLCD(0x0C);								//desativa cursor
+//	while(TesteBusyFlag());							//espera LCD controller terminar de executar instru??o
+    
+	while(1){
+//        EscInstLCD(GetKey());								//limpa display e mostra cursor piscando na primeira posi??o da primmeira linha
+//        while(TesteBusyFlag());
+        x = GetKey();
+        Delay1KTCYx(40);
+        if(x=='G') continue;
+        {
+            if(x!='\0'){
+                if(x=='1'){
+                    EscStringLCD(x);							//escreve string no LCD					
+                    while(TesteBusyFlag());
+                } else if (x=='2'){
+                    EscStringLCD(x);							//escreve string no LCD					
+                    while(TesteBusyFlag());
+                } else if (x=='3'){
+                    EscStringLCD(x);							//escreve string no LCD					
+                    while(TesteBusyFlag());
+                } else if (x=='4'){
+                    EscStringLCD(x);							//escreve string no LCD					
+                    while(TesteBusyFlag());
+                } else if (x=='5'){
+                    EscStringLCD(x);							//escreve string no LCD					
+                    while(TesteBusyFlag());
+                } else if (x=='6'){
+                    EscStringLCD(x);							//escreve string no LCD					
+                    while(TesteBusyFlag());
+                } else if (x=='7'){
+                    EscStringLCD(x);							//escreve string no LCD					
+                    while(TesteBusyFlag());
+                } else if (x=='8'){
+                    EscStringLCD(x);							//escreve string no LCD					
+                    while(TesteBusyFlag());
+                }
+            }
+        }
+    };										//loop infinito    		
 }
 /*******************************************************************
 Esta funcao inicializa os resgistradores SFRs.*/
@@ -77,7 +114,7 @@ Esta funcao inicializa os resgistradores SFRs.*/
 	PORTA = 0;				//limpa PORTA
 	PORTB = 0;				//limpa PORTB
 	PORTC = 0;				//limpa PORTC
-	PORTD = 0xFF;			//apaga displays
+	PORTD = 0x00;			//apaga displays
 	PORTE = 0;				//limpa PORTE
 //********************************************************************
 }
