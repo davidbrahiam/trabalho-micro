@@ -38,21 +38,21 @@ void escreveCaracterL2(char esc[17]);
 
 //******************************************************************************
 // Declara??o de vari?veis globais
-unsigned char *read;
-unsigned char address;
-unsigned char flagPORTD = 0;
-unsigned char buf [17] = "USER";                       //declara??o de vetor inicializado
-unsigned char buf02 [17] = "NOVA";                  //declara??o de vetor inicializado
 unsigned char connect1 [17] = "Connecting...";                  //declara??o de vetor inicializado
 unsigned char connect2 [17] = "Please Wait!";                  //declara??o de vetor inicializado
 unsigned char init [17] =    "OK!";                  //declara??o de vetor inicializado
 unsigned char limpa [17] = " ";                  //declara??o de vetor inicializado
+unsigned char user [3] = "";                  //declara??o de vetor inicializado
 unsigned char senha [17] = "SENHA:";                  //declara??o de vetor inicializado
+unsigned char usuario [17] = "USUARIO:";                  //declara??o de vetor inicializado
 unsigned char nova_senha [17] = "NOVA SENHA:";                  //declara??o de vetor inicializado
 unsigned char password[6] = "";
 unsigned char success [17] =  "Seja bem vindo! ";                  //declara??o de vetor inicializado
 unsigned char invalid [17] = "Senha inválida  ";                  //declara??o de vetor inicializado
 
+int position_password = 0;
+int position_user = 0;
+int qtdHashtag = 0;
 int dly = 0; 
 char controle = 1;
 int qtdLinha = 0;
@@ -71,7 +71,12 @@ void interrupt_at_high_vector(void) {
 
 //********************************************************************
 void main(void)										//fun??o main					
-{
+{    
+    unsigned char address;
+    unsigned char flagPORTD = 0;
+    unsigned char buf [17] = "USER";                       //declara??o de vetor inicializado
+    unsigned char buf02 [17] = "NOVA";                  //declara??o de vetor inicializado
+    
     Inic_Regs ();									//configurar SFRs
     // Configura??o do TIMER0
     configTMR0(0b11000000); //Passo 1
@@ -87,7 +92,11 @@ void main(void)										//fun??o main
     
 //EEPROM_Read_Block(0x40, read, 8);
 //saveNewUser(buf, buf02);
-//authenticateUser(buf, buf02);
+//if (authenticateUser(buf, buf02)) {
+//    escreveCaracterL1(success);
+//} else {
+//    escreveCaracterL1(invalid);
+//}
 
 	while(1);										//loop infinito    		
 }
@@ -117,27 +126,15 @@ void initLCD(){
     escreveCaracterL2(connect2);
     
     //delay de 3 segundos
-	for(dly=0;dly<100;dly++) _Delay5ms();
+	for(dly=0;dly<50;dly++) _Delay5ms();
     
     escreveCaracterL1(init);
     escreveCaracterL2(limpa);
     
     //delay de 3 segundos
-	for(dly=0;dly<100;dly++) _Delay5ms();
+	for(dly=0;dly<50;dly++) _Delay5ms();
     
-    escreveCaracterL1(senha);
-}
-
-void escreveLed2(char esc) {
-    buf02[17] = esc;
-    EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
-    while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
-
-    EscStringLCD(buf02); //escreve string no LCD					
-    while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
-
-    EscInstLCD(0x0C); //desativa cursor
-    while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+    escreveCaracterL1(usuario);
 }
 
 void escreveCaracterL1(char esc[17]) {
@@ -162,6 +159,36 @@ void escreveCaracterL2(char esc[17]) {
 	}
 }
 
+void addUser(char x){
+    user[position_user] = x;
+    position_user++;
+    if(position_user == 3 ){
+        escreveCaracterL1(senha);
+        escreveCaracterL2(limpa);
+        EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
+        while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+    }
+}
+
+void addPassword(char x){
+    password[position_password] = x;
+    position_password++;
+    if(position_password == 6 ){
+        position_password = 0;
+        position_user = 0;
+        PORTCbits.RC0 = PORTCbits.RC0;
+        PORTCbits.RC1 = !PORTCbits.RC0;
+        if (authenticateUser(user, password)) escreveCaracterL1(success);
+        else escreveCaracterL1(invalid);
+        escreveCaracterL2(limpa);
+        //delay de 3 segundos
+        for(dly=0;dly<50;dly++) _Delay5ms();
+        escreveCaracterL1(usuario);
+        EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
+        while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+    }
+}
+
 void escreveCaracter(char esc) {
     if(qtdLinha==0){
         EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
@@ -172,6 +199,34 @@ void escreveCaracter(char esc) {
     while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
     Delay10KTCYx(20);
     qtdLinha++;
+    
+    if(position_user == 3){
+        addPassword(esc);
+    }else{
+        addUser(esc);
+    }
+    
+//    if ('#' == esc){
+//        qtdHashtag++;
+////        if(qtdHashtag==3){
+//            
+//            PORTCbits.RC0 = !PORTCbits.RC0;
+//            PORTCbits.RC1 = !PORTCbits.RC0;
+//            EscInstLCD(0x80); //posiciona cursor na primeir aposic??o  da segunda linha
+//            while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+//            // Pegar o valor da senha e buscar na EPROM
+//            EscStringLCD(password); //escreve string no LCD					
+//            while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+//            Delay10KTCYx(20);
+//            EscDataLCD('#'); //escreve string no LCD					
+//            qtdLinha++;
+//            
+//            
+////            qtdHashtag=0;
+////        }
+//    }
+    
+    
 }
 
 

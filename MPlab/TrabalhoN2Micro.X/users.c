@@ -112,6 +112,8 @@ int authenticateUser(unsigned char *id, unsigned char *password) {
             else return 0;
             
             break;
+        } else if(address == eepromEmptyAddress()) {
+            return 0;
         }
     }
 }
