@@ -89,9 +89,12 @@ void main(void)										//fun??o main
     initLCD();
 
 //**********************************
-    
+
+// salva um novo usuário root caso não exista nenhum
+//saveRoot();
+//if(updateRoot(senha)) escreveCaracterL1(success);
 //EEPROM_Read_Block(0x40, read, 8);
-//saveNewUser(buf, buf02);
+saveNewUser(buf, buf02);
 //if (authenticateUser(buf, buf02)) {
 //    escreveCaracterL1(success);
 //} else {

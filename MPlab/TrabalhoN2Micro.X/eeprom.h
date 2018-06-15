@@ -22,11 +22,6 @@ void EEPROM_Write_Block( unsigned char address, unsigned char *data)
         data++;  
         i++;
     }
-//    for(i=0; i<length; i++)
-//    {
-//      Write_b_eep(address+i, *(data+i));
-//      Delay10TCYx(1);
-//    }
 }
 
 unsigned char EEPROM_Read_Block( unsigned char address, unsigned char *data)
@@ -35,7 +30,7 @@ unsigned char EEPROM_Read_Block( unsigned char address, unsigned char *data)
     while(1) {           
         *(data+i) = Read_b_eep(address+i);
         Delay10TCYx(1);
-        if(*(data+i) == 0x23) {
+        if(*(data+i) == 0x23 || *(data+i) == 0xFF) {
             break;
         }
         i++;
