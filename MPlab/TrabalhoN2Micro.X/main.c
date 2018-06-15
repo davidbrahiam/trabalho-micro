@@ -198,7 +198,7 @@ void escreveCaracter(char esc) {
         while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
     }
     
-    EscDataLCD('*'); //escreve string no LCD					
+    EscDataLCD(esc); //escreve string no LCD					
     while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
     Delay10KTCYx(20);
     qtdLinha++;
@@ -252,8 +252,8 @@ void high_isr(void) {
             else if (row_4) escreveCaracter('*');
             col_1 = 0;
             col_2 = 1;
-            col_3 = 1;
-            col_4 = 1;
+            col_3 = 0;
+            col_4 = 0;
             controle = 2;
 
         } else if (col_2 && controle == 2) {
@@ -261,10 +261,10 @@ void high_isr(void) {
             else if (row_2) escreveCaracter('5');
             else if (row_3) escreveCaracter('8');
             else if (row_4) escreveCaracter('0');
-            col_1 = 1;
+            col_1 = 0;
             col_2 = 0;
             col_3 = 1;
-            col_4 = 1;
+            col_4 = 0;
             controle = 3;
 
         } else if (col_3 && controle == 3) {
@@ -272,8 +272,8 @@ void high_isr(void) {
             else if (row_2) escreveCaracter('4');
             else if (row_3) escreveCaracter('9');
             else if (row_4) escreveCaracter('#');
-            col_1 = 1;
-            col_2 = 1;
+            col_1 = 0;
+            col_2 = 0;
             col_3 = 0;
             col_4 = 1;
             controle = 4;
@@ -284,12 +284,11 @@ void high_isr(void) {
             else if (row_3) escreveCaracter('C');
             else if (row_4) escreveCaracter('D');
             col_1 = 1;
-            col_2 = 1;
-            col_3 = 1;
+            col_2 = 0;
+            col_3 = 0;
             col_4 = 0;
             controle = 1;
         }
-
     }
 }
 
