@@ -55,6 +55,7 @@ int position_password = 0;
 int position_user = 0;
 int qtdHashtag = 0;
 int dly = 0; 
+int initializing = 1;
 char controle = 1;
 int qtdLinha = 0;
 //******************************************************************************
@@ -139,6 +140,9 @@ void initLCD(){
 	for(dly=0;dly<50;dly++) _Delay5ms();
     
     escreveCaracterL1(usuario);
+    EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
+    while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+    initializing = 0;
 }
 
 void escreveCaracterL1(char esc[17]) {
@@ -197,10 +201,7 @@ void addPassword(char x){
 }
 
 void escreveCaracter(char esc) {
-    if(qtdLinha==0){
-        EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
-        while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
-    }
+    if(initializing) return;
     
     if(userOrPass){
         EscDataLCD(esc); //escreve string no LCD quando não é senha	
