@@ -6,7 +6,7 @@ MPLAB X IDE:		v4.05
 Autor:				Álefe Macedo              
 *********************************************************************/
 #include "eeprom.h"
-#include "users.H"
+#include "users.h"
 #include <string.h>
 #include <stdio.h>
 
