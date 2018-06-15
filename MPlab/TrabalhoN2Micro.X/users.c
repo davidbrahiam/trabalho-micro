@@ -6,6 +6,7 @@ MPLAB X IDE:		v4.05
 Autor:				Álefe Macedo              
 *********************************************************************/
 #include "eeprom.h"
+#include "users.H"
 #include <string.h>
 #include <stdio.h>
 
@@ -26,49 +27,92 @@ unsigned char eepromEmptyAddress() {
 
 // Recebe um id e uma senha para salvar um novo usuário 
 void saveNewUser(unsigned char *id, unsigned char *password) {
-    unsigned char *bufferID = "U";
-    unsigned char *bufferPASS = "P";
+    unsigned char *bufferID;
+    unsigned char *bufferPASS;
+    unsigned char i = 1;
+    unsigned char address = eepromEmptyAddress();
     
-    strcat(bufferID, id);
-    strcat(bufferPASS, password);
+    *(bufferID+0) = 0x55;
+    *(bufferPASS+0) = 0x50;
+    
+    while (1) {
+        if (*id == 0x00) {
+            *(bufferID+i) = 0x23;
+            break;
+        }
+        *(bufferID+i) = *id; 
+        id++;
+        i++;
+    }
     
     //escreve na eeprom o id do novo usuário
     EEPROM_Write_Block(
-            0x00,
-            bufferID, 
-            sizeof(bufferID)
-    ); 
+            address,
+            bufferID
+    );
+    
+    address = address + (i+1);
+    
+    i = 1;
+    while (1) {
+        if (*password == 0x00) {
+            *(bufferPASS+i) = 0x23;
+            break;
+        }
+        *(bufferPASS+i) = *password; 
+        password++;
+        i++;
+    }     
     
     //escreve na eeprom a senha do novo usuário
-//    EEPROM_Write_Block(
-//            eepromEmptyAddress(),
-//            bufferPASS,
-//            sizeof(bufferPASS)
-//    );
+    EEPROM_Write_Block(
+            address,
+            bufferPASS
+    );
 }
 
 // Autentica os dados de um usuário de acordo com os dados salvos na eeprom
 int authenticateUser(unsigned char *id, unsigned char *password) {
     unsigned char *read;                     //buffer para leitura da eeprom
-    unsigned char bufferID[8] = "U";
-    unsigned char bufferPASS[8] = "P";
+    unsigned char *bufferID;
+    unsigned char *bufferPASS;
     unsigned char address = 0x00;
+    unsigned char i = 1;
+    *(bufferID+0) = 0x55;
+    *(bufferPASS+0) = 0x50;
     
-    strcat(bufferID, id);
-    strcat(bufferPASS, password);    
+    while (1) {
+        if (*id == 0x00) {
+            *(bufferID+i) = 0x23;
+            break;
+        }
+        *(bufferID+i) = *id; 
+        id++;
+        i++;
+    }  
+    
+    i = 1;
+    while (1) {
+        if (*password == 0x00) {
+            *(bufferPASS+i) = 0x23;
+            break;
+        }
+        *(bufferPASS+i) = *password; 
+        password++;
+        i++;
+    }
     
     //le da eeprom
     while (1) {
-        EEPROM_Read_Block(address, read, 8);
+        address += (EEPROM_Read_Block(address, read) + 1);
         if(memcmp(read, bufferID, 1) == 0) {
-            EEPROM_Read_Block(address+8, read, 8);
+            address += (EEPROM_Read_Block(address, read) + 1);
             
             if(memcmp(read, bufferPASS, 1) == 0) return 1;
             else return 0;
             
             break;
         }
-        address +=8;
     }
 }
 /*******************************************************************/
