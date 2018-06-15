@@ -48,8 +48,9 @@ unsigned char usuario [17] = "USUARIO:";                  //declara??o de vetor 
 unsigned char nova_senha [17] = "NOVA SENHA:";                  //declara??o de vetor inicializado
 unsigned char password[6] = "";
 unsigned char success [17] =  "Seja bem vindo! ";                  //declara??o de vetor inicializado
-unsigned char invalid [17] = "Senha inv�lida  ";                  //declara??o de vetor inicializado
+unsigned char invalid [17] = "Senha inválida  ";                  //declara??o de vetor inicializado
 
+int userOrPass = 1;                                               // 1=user e 0=passward
 int position_password = 0;
 int position_user = 0;
 int qtdHashtag = 0;
@@ -90,7 +91,7 @@ void main(void)										//fun??o main
 
 //**********************************
 
-// salva um novo usu�rio root caso n�o exista nenhum
+// salva um novo usuário root caso não exista nenhum
 //saveRoot();
 //if(updateRoot(senha)) escreveCaracterL1(success);
 //EEPROM_Read_Block(0x40, read, 8);
@@ -165,7 +166,9 @@ void escreveCaracterL2(char esc[17]) {
 void addUser(char x){
     user[position_user] = x;
     position_user++;
+    //userOrPass = 1;
     if(position_user == 3 ){
+        userOrPass = 0;
         escreveCaracterL1(senha);
         escreveCaracterL2(limpa);
         EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
@@ -186,6 +189,7 @@ void addPassword(char x){
         escreveCaracterL2(limpa);
         //delay de 3 segundos
         for(dly=0;dly<50;dly++) _Delay5ms();
+        userOrPass = 1;  // valida senha
         escreveCaracterL1(usuario);
         EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
         while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
@@ -198,7 +202,12 @@ void escreveCaracter(char esc) {
         while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
     }
     
-    EscDataLCD(esc); //escreve string no LCD					
+    if(userOrPass){
+        EscDataLCD(esc); //escreve string no LCD quando não é senha	
+    }else{
+        EscDataLCD('*'); //escreve string no LCD quando é senha
+    }
+    
     while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
     Delay10KTCYx(20);
     qtdLinha++;
