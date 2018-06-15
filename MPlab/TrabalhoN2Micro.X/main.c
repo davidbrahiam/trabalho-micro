@@ -31,7 +31,7 @@ void main(void)										//fun??o main
 unsigned char *read;
 unsigned char address;
 unsigned char buf [17] = "USER";                       //declara??o de vetor inicializado
-unsigned char buf02 [17] = "SENHA";                  //declara??o de vetor inicializado
+unsigned char buf02 [17] = "NOVA";                  //declara??o de vetor inicializado
 int dly=0;											//declara??o de vari?vel local inicializada
 //**********************************
 	Inic_Regs ();									//configurar SFRs
@@ -47,8 +47,8 @@ int dly=0;											//declara??o de vari?vel local inicializada
     EscInstLCD(0x01);								//limpa display e mostra cursor piscando na primeira posi??o da primmeira linha
 	while(TesteBusyFlag());							//espera LCD controller terminar de executar instru??o
 //EEPROM_Read_Block(0x40, read, 8);
-saveNewUser(buf, buf02);
-//authenticateUser(buf, buf02);
+//saveNewUser(buf, buf02);
+authenticateUser(buf, buf02);
 
 //	EscStringLCD(buf);								//escreve string no LCD
     EscStringLCD(address);
