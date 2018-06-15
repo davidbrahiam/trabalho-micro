@@ -48,7 +48,7 @@ unsigned char usuario [17] = "USUARIO:";                  //declara??o de vetor 
 unsigned char nova_senha [17] = "NOVA SENHA:";                  //declara??o de vetor inicializado
 unsigned char password[6] = "";
 unsigned char success [17] =  "Seja bem vindo! ";                  //declara??o de vetor inicializado
-unsigned char invalid [17] = "Senha inv·lida  ";                  //declara??o de vetor inicializado
+unsigned char invalid [17] = "Senha inv√°lida  ";                  //declara??o de vetor inicializado
 
 int userOrPass = 1;                                               // 1=user e 0=passward
 int position_password = 0;
@@ -90,9 +90,12 @@ void main(void)										//fun??o main
     initLCD();
 
 //**********************************
-    
+
+// salva um novo usu√°rio root caso n√£o exista nenhum
+//saveRoot();
+//if(updateRoot(senha)) escreveCaracterL1(success);
 //EEPROM_Read_Block(0x40, read, 8);
-//saveNewUser(buf, buf02);
+saveNewUser(buf, buf02);
 //if (authenticateUser(buf, buf02)) {
 //    escreveCaracterL1(success);
 //} else {
@@ -200,9 +203,9 @@ void escreveCaracter(char esc) {
     }
     
     if(userOrPass){
-        EscDataLCD(esc); //escreve string no LCD quando n„o È senha	
+        EscDataLCD(esc); //escreve string no LCD quando n√£o √© senha	
     }else{
-        EscDataLCD('*'); //escreve string no LCD quando È senha
+        EscDataLCD('*'); //escreve string no LCD quando √© senha
     }
     
     while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
@@ -295,7 +298,6 @@ void high_isr(void) {
             col_4 = 0;
             controle = 1;
         }
-
     }
 }
 
