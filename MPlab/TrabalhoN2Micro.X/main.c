@@ -47,17 +47,24 @@ unsigned char senha [17] = "SENHA:";                  //declara??o de vetor inic
 unsigned char usuario [17] = "USUARIO:";                  //declara??o de vetor inicializado
 unsigned char nova_senha [17] = "NOVA SENHA:";                  //declara??o de vetor inicializado
 unsigned char password[6] = "";
+unsigned char pass[6] = "";
+unsigned char pass_repeat[6]="";
+unsigned char rootMessage [17]= "Root:";
+unsigned char repeatMessage [17]= "Repete:          ";
 unsigned char success [17] =  "Seja bem vindo! ";                  //declara??o de vetor inicializado
-unsigned char invalid [17] = "Senha inválida  ";                  //declara??o de vetor inicializado
+unsigned char invalid [17] = "Senha invalida  ";                  //declara??o de vetor inicializado
 
 int userOrPass = 1;                                               // 1=user e 0=passward
 int position_password = 0;
 int position_user = 0;
 int qtdHashtag = 0;
-int dly = 0; 
+int position_pass = 0;
+int dly = 0;
+int isRoot = 0;
+int needAuth=1;
+int needRepeat=1;
 int initializing = 1;
 char controle = 1;
-int qtdLinha = 0;
 //******************************************************************************
 /* Vetor de interrup??o de alta prioridade.
  * Toda vez que ocorre uma interrup??o o fluxo do program ? desviado para a 
@@ -188,56 +195,98 @@ void addPassword(char x){
         position_user = 0;
         PORTCbits.RC0 = PORTCbits.RC0;
         PORTCbits.RC1 = !PORTCbits.RC0;
-        if (authenticateUser(user, password)) escreveCaracterL1(success);
-        else escreveCaracterL1(invalid);
-        escreveCaracterL2(limpa);
-        //delay de 3 segundos
-        for(dly=0;dly<50;dly++) _Delay5ms();
+//        if (authenticateUser(user, password)) escreveCaracterL1(success);
+//        else escreveCaracterL1(invalid);
         userOrPass = 1;  // valida senha
         escreveCaracterL1(usuario);
+        escreveCaracterL2(limpa);
         EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
         while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+        for(dly=0;dly<50;dly++) _Delay5ms();
     }
+}
+
+void escreveL2(char x){
+    pass[position_pass] = x;
+    position_pass++;
 }
 
 void escreveCaracter(char esc) {
     if(initializing) return;
-    
-    if(userOrPass){
-        EscDataLCD(esc); //escreve string no LCD quando não é senha	
-    }else{
+    if(isRoot){
+        escreveL2(esc);
         EscDataLCD('*'); //escreve string no LCD quando é senha
-    }
-    
-    while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
-    Delay10KTCYx(20);
-    qtdLinha++;
-    
-    if(position_user == 3){
-        addPassword(esc);
+        while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+        Delay10KTCYx(20);
+        if(position_pass == 6){
+            int i = 0;
+            position_pass=0;
+            position_user = 0;
+            for(i=0;i<3;i++) user[i] = '9';
+            if(needAuth){
+//                if (authenticateUser(user, pass)){
+                    needAuth=0;
+                    needRepeat=1;
+                    escreveCaracterL1(nova_senha);
+                    escreveCaracterL2(limpa);
+//                }
+            }else if(needRepeat){
+                int i =0;
+                for(i=0;i<6;i++)pass_repeat[i] = pass[i];
+                escreveCaracterL1(repeatMessage);
+                escreveCaracterL2(limpa);
+                needRepeat=0;
+            } else{
+                int j = 1;
+                int i =0;
+                isRoot=0;
+                needRepeat=1;
+                needAuth=1;
+                userOrPass=1;
+                for(i=0;i<6;i++){
+                    if(j){
+                        if(pass_repeat[i] == pass[i])j=1;
+                        else j =0;
+                    } else break;
+                }
+                if(j)escreveCaracterL1(usuario);
+                else escreveCaracterL1(invalid);
+                escreveCaracterL2(limpa);
+                Delay10KTCYx(20);
+                escreveCaracterL1(usuario);
+            }
+            Delay10KTCYx(20);
+            EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
+            while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+        }
     }else{
-        addUser(esc);
+        if (userOrPass) {
+            EscDataLCD(esc); //escreve string no LCD quando não é senha	
+        } else {
+            EscDataLCD('*'); //escreve string no LCD quando é senha
+        }
+
+        while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+        Delay10KTCYx(20);
+
+        if (position_user == 3) {
+            addPassword(esc);
+        } else {
+            addUser(esc);
+        }
+        if ('*' == esc){
+            qtdHashtag++;
+            if(qtdHashtag==3){
+                isRoot=1;
+                escreveCaracterL1(rootMessage);
+                escreveCaracterL2(limpa);
+                Delay10KTCYx(20);
+                EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
+                while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+                qtdHashtag=0;
+            }
+        }
     }
-    
-//    if ('#' == esc){
-//        qtdHashtag++;
-////        if(qtdHashtag==3){
-//            
-//            PORTCbits.RC0 = !PORTCbits.RC0;
-//            PORTCbits.RC1 = !PORTCbits.RC0;
-//            EscInstLCD(0x80); //posiciona cursor na primeir aposic??o  da segunda linha
-//            while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
-//            // Pegar o valor da senha e buscar na EPROM
-//            EscStringLCD(password); //escreve string no LCD					
-//            while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
-//            Delay10KTCYx(20);
-//            EscDataLCD('#'); //escreve string no LCD					
-//            qtdLinha++;
-//            
-//            
-////            qtdHashtag=0;
-////        }
-//    }
     
     
 }
