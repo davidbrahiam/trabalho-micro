@@ -52,7 +52,8 @@ unsigned char pass_repeat[6]="";
 unsigned char rootMessage [17]= "Root:";
 unsigned char repeatMessage [17]= "Repete:          ";
 unsigned char success [17] =  "Seja bem vindo! ";                  //declara??o de vetor inicializado
-unsigned char invalid [17] = "Senha invalida  ";                  //declara??o de vetor inicializado
+unsigned char invalid [17] = "Senha invalida  ";
+unsigned char successSenha [17] = "Senha OK! "; //declara??o de vetor inicializado
 
 int userOrPass = 1;                                               // 1=user e 0=passward
 int position_password = 0;
@@ -256,10 +257,10 @@ void escreveCaracter(char esc) {
                         else j =0;
                     } else break;
                 }
-                if(j)escreveCaracterL1(usuario);
+                if(j)escreveCaracterL1(successSenha);
                 else escreveCaracterL1(invalid);
                 escreveCaracterL2(limpa);
-                Delay10KTCYx(20);
+                Delay10KTCYx(30);
                 escreveCaracterL1(usuario);
             }
             Delay10KTCYx(20);
