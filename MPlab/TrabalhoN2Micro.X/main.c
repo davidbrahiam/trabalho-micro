@@ -42,7 +42,7 @@ unsigned char connect1 [17] = "Connecting...";                  //declara??o de 
 unsigned char connect2 [17] = "Please Wait!";                  //declara??o de vetor inicializado
 unsigned char init [17] =    "OK!";                  //declara??o de vetor inicializado
 unsigned char limpa [17] = " ";                  //declara??o de vetor inicializado
-unsigned char user [3] = "";                  //declara??o de vetor inicializado
+unsigned char userG [3] = "";                  //declara??o de vetor inicializado
 unsigned char senha [17] = "SENHA:";                  //declara??o de vetor inicializado
 unsigned char usuario [17] = "USUARIO:";                  //declara??o de vetor inicializado
 unsigned char nova_senha [17] = "NOVA SENHA:";                  //declara??o de vetor inicializado
@@ -80,12 +80,9 @@ void interrupt_at_high_vector(void) {
 
 //********************************************************************
 void main(void)										//fun??o main					
-{    
-    unsigned char address;
-    unsigned char flagPORTD = 0;
-    unsigned char buf [17] = "USER";                       //declara??o de vetor inicializado
-    unsigned char buf02 [17] = "NOVA";                  //declara??o de vetor inicializado
-    
+{       
+    unsigned char userT[3] = "000";
+    unsigned char passwordT[6] = "122436";
     Inic_Regs ();									//configurar SFRs
     // Configura??o do TIMER0
     configTMR0(0b11000000); //Passo 1
@@ -100,10 +97,10 @@ void main(void)										//fun??o main
 //**********************************
 
 // salva um novo usuário root caso não exista nenhum
-//saveRoot();
+saveRoot();
 //if(updateRoot(senha)) escreveCaracterL1(success);
 //EEPROM_Read_Block(0x40, read, 8);
-saveNewUser(buf, buf02);
+saveNewUser(userT, passwordT);
 //if (authenticateUser(buf, buf02)) {
 //    escreveCaracterL1(success);
 //} else {
@@ -175,7 +172,7 @@ void escreveCaracterL2(char esc[17]) {
 }
 
 void addUser(char x){
-    user[position_user] = x;
+    userG[position_user] = x;
     position_user++;
     //userOrPass = 1;
     if(position_user == 3 ){
@@ -193,10 +190,20 @@ void addPassword(char x){
     if(position_password == 6 ){
         position_password = 0;
         position_user = 0;
-        PORTCbits.RC0 = PORTCbits.RC0;
-        PORTCbits.RC1 = !PORTCbits.RC0;
-//        if (authenticateUser(user, password)) escreveCaracterL1(success);
-//        else escreveCaracterL1(invalid);
+        if (authenticateUser(userG, password)) {
+            PORTCbits.RC0 = 1;
+            escreveCaracterL1(success);
+            for(dly=0;dly<50;dly++) _Delay5ms();
+            PORTCbits.RC0 = 0;
+        } else {
+            PORTCbits.RC1 = 1;
+            escreveCaracterL1(invalid);
+            for(dly=0;dly<50;dly++) _Delay5ms();
+            PORTCbits.RC1 = 0;
+        }
+        escreveCaracterL2(limpa);
+        //delay de 3 segundos
+        for(dly=0;dly<50;dly++) _Delay5ms();
         userOrPass = 1;  // valida senha
         escreveCaracterL1(usuario);
         escreveCaracterL2(limpa);

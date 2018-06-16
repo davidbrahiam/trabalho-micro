@@ -7,7 +7,6 @@
       <itemPath>MCC18_18F4550.h</itemPath>
       <itemPath>Lcd_8bits.H</itemPath>
       <itemPath>eeprom.h</itemPath>
-      <itemPath>stdint.h</itemPath>
       <itemPath>users.H</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -20,7 +19,6 @@
       <itemPath>main.c</itemPath>
       <itemPath>Lcd_8bits.c</itemPath>
       <itemPath>users.c</itemPath>
-      <itemPath>criptografia.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
