@@ -49,10 +49,11 @@ unsigned char nova_senha [17] = "NOVA SENHA:";                  //declara??o de 
 unsigned char password[6] = "";
 unsigned char pass[6] = "";
 unsigned char pass_repeat[6]="";
-unsigned char rootMessage [17]= "Root:";
-unsigned char repeatMessage [17]= "Repete:          ";
-unsigned char success [17] =  "Seja bem vindo! ";                  //declara??o de vetor inicializado
-unsigned char invalid [17] = "Senha invalida  ";                  //declara??o de vetor inicializado
+unsigned char rootMessage [17]= "ROOT:";
+unsigned char successSenha [17]= "SENHA OK! ";
+unsigned char repeatMessage [17]= "REPETE:          ";
+unsigned char success [17] =  "SEJA BEM VINDO! ";                  //declara??o de vetor inicializado
+unsigned char invalid [17] = "SENHA INVALIDA  ";                  //declara??o de vetor inicializado
 
 int userOrPass = 1;                                               // 1=user e 0=passward
 int position_password = 0;
@@ -229,23 +230,45 @@ void escreveCaracter(char esc) {
             int i = 0;
             position_pass=0;
             position_user = 0;
-            for(i=0;i<3;i++) user[i] = '9';
+            for(i=0;i<3;i++) userG[i] = '9';
             if(needAuth){
-//                if (authenticateUser(user, pass)){
+                if (authenticateUser(userG, pass)){
                     needAuth=0;
                     needRepeat=1;
                     escreveCaracterL1(nova_senha);
                     escreveCaracterL2(limpa);
-//                }
+                }else{
+                    isRoot=0;
+                    needRepeat=1;
+                    needAuth=1;
+                    userOrPass=1;
+                    escreveCaracterL1(invalid);
+                    escreveCaracterL2(limpa);
+                    Delay10KTCYx(20);
+                    escreveCaracterL1(usuario);
+                }
             }else if(needRepeat){
                 int i =0;
+                unsigned char message [17] = "ROOT: 999";
                 for(i=0;i<6;i++)pass_repeat[i] = pass[i];
-                escreveCaracterL1(repeatMessage);
-                escreveCaracterL2(limpa);
+                escreveCaracterL1(message);
+                EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
+                while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+                EscDataLCD('R');
+                EscDataLCD('E');
+                EscDataLCD('P');
+                EscDataLCD('E');
+                EscDataLCD('T');
+                EscDataLCD('E');
+                EscDataLCD(':');
                 needRepeat=0;
+                return;
             } else{
                 int j = 1;
                 int i =0;
+                position_pass=0;
+                position_password=0;
+                position_user=0;
                 isRoot=0;
                 needRepeat=1;
                 needAuth=1;
@@ -256,7 +279,10 @@ void escreveCaracter(char esc) {
                         else j =0;
                     } else break;
                 }
-                if(j)escreveCaracterL1(usuario);
+                if(j){
+                    updateRoot(pass);
+                    escreveCaracterL1(successSenha);
+                }
                 else escreveCaracterL1(invalid);
                 escreveCaracterL2(limpa);
                 Delay10KTCYx(20);
