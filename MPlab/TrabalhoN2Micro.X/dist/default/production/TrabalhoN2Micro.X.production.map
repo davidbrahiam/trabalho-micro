@@ -1,5 +1,5 @@
 MPLINK 5.00, LINKER
-Linker Map File - Created Fri Jun 15 21:06:41 2018
+Linker Map File - Created Sat Jun 16 15:52:50 2018
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -10,36 +10,32 @@ Linker Map File - Created Fri Jun 15 21:06:41 2018
                    .cinit    romdata   0x00000e    program   0x00000e
                _cinit_scn       code   0x00001c    program   0x00009e
           .code_write_B.o       code   0x0000ba    program   0x000066
-                   STRING       code   0x000120    program   0x000052
-           .code_read_B.o       code   0x000172    program   0x000044
-             D10KTCYXCODE       code   0x0001b6    program   0x00002e
-             _startup_scn       code   0x0001e4    program   0x00001c
+           .code_read_B.o       code   0x000120    program   0x000044
+             D10KTCYXCODE       code   0x000164    program   0x00002e
+                    .code       code   0x000192    program   0x000020
+             _startup_scn       code   0x0001b2    program   0x00001c
+             D100TCYXCODE       code   0x0001ce    program   0x00001c
+              D10TCYXCODE       code   0x0001ea    program   0x000016
                 My_codigo       code   0x000200    program   0x00004a
-             .code_main.o       code   0x00024a    program   0x000920
-     .code_criptografia.o       code   0x000b6a    program   0x000848
-            .code_users.o       code   0x0013b2    program   0x000764
-        .code_Lcd_8bits.o       code   0x001b16    program   0x00024e
-                    .code       code   0x001d64    program   0x000020
-             D100TCYXCODE       code   0x001d84    program   0x00001c
-              D10TCYXCODE       code   0x001da0    program   0x000016
-        .idata_read_B.o_i    romdata   0x001db6    program   0x000000
-        .romdata_read_B.o    romdata   0x001db6    program   0x000000
-  .romdata_criptografia.o    romdata   0x001db6    program   0x000000
-       .idata_write_B.o_i    romdata   0x001db6    program   0x000000
-         .romdata_users.o    romdata   0x001db6    program   0x000000
-         .idata_users.o_i    romdata   0x001db6    program   0x000000
-       .romdata_write_B.o    romdata   0x001db6    program   0x000000
-        .romdata___init.o    romdata   0x001db6    program   0x000000
-     .romdata_Lcd_8bits.o    romdata   0x001db6    program   0x000000
-         .romdata_c018i.o    romdata   0x001db6    program   0x000000
-          .idata_main.o_i    romdata   0x001db6    program   0x0000e5
-          .romdata_main.o    romdata   0x001db6    program   0x000000
-             .stringtable    romdata   0x001db6    program   0x000000
-         .idata_c018i.o_i    romdata   0x001e9b    program   0x000000
-        .idata___init.o_i    romdata   0x001e9b    program   0x000000
-  .idata_criptografia.o_i    romdata   0x001e9b    program   0x000000
-     .idata_Lcd_8bits.o_i    romdata   0x001e9b    program   0x000000
-            .code_c018i.o       code   0x001e9c    program   0x000000
+             .code_main.o       code   0x00024a    program   0x000a92
+            .code_users.o       code   0x000cdc    program   0x00082a
+        .code_Lcd_8bits.o       code   0x001506    program   0x00024e
+         .romdata_users.o    romdata   0x001754    program   0x000000
+         .idata_users.o_i    romdata   0x001754    program   0x000000
+     .romdata_Lcd_8bits.o    romdata   0x001754    program   0x000000
+        .idata_read_B.o_i    romdata   0x001754    program   0x000000
+        .romdata_read_B.o    romdata   0x001754    program   0x000000
+       .idata_write_B.o_i    romdata   0x001754    program   0x000000
+       .romdata_write_B.o    romdata   0x001754    program   0x000000
+        .romdata___init.o    romdata   0x001754    program   0x000000
+             .stringtable    romdata   0x001754    program   0x000000
+          .romdata_main.o    romdata   0x001754    program   0x000000
+          .idata_main.o_i    romdata   0x001754    program   0x0000f6
+         .romdata_c018i.o    romdata   0x001754    program   0x000000
+        .idata___init.o_i    romdata   0x00184a    program   0x000000
+     .idata_Lcd_8bits.o_i    romdata   0x00184a    program   0x000000
+            .code_c018i.o       code   0x00184a    program   0x000000
+         .idata_c018i.o_i    romdata   0x00184a    program   0x000000
     .config_300000_main.o    romdata   0x300000    program   0x000001
     .config_300001_main.o    romdata   0x300001    program   0x000001
     .config_300002_main.o    romdata   0x300002    program   0x000001
@@ -52,26 +48,24 @@ Linker Map File - Created Fri Jun 15 21:06:41 2018
     .config_30000b_main.o    romdata   0x30000b    program   0x000001
     .config_30000c_main.o    romdata   0x30000c    program   0x000001
     .config_30000d_main.o    romdata   0x30000d    program   0x000001
-                 .tmpdata      udata   0x000000       data   0x000014
-                MATH_DATA      udata   0x000014       data   0x000002
-                DELAYDAT2      udata   0x000016       data   0x000001
-                DELAYDAT1      udata   0x000017       data   0x000001
-            .idata_main.o      idata   0x000100       data   0x0000e5
-           .udata_c018i.o      udata   0x0001e5       data   0x00000a
-          .idata___init.o      idata   0x0001ef       data   0x000000
-          .udata___init.o      udata   0x0001ef       data   0x000000
-         .idata_write_B.o      idata   0x0001ef       data   0x000000
-         .udata_write_B.o      udata   0x0001ef       data   0x000000
-          .idata_read_B.o      idata   0x0001ef       data   0x000000
-          .udata_read_B.o      udata   0x0001ef       data   0x000000
-    .idata_criptografia.o      idata   0x0001ef       data   0x000000
-    .udata_criptografia.o      udata   0x0001ef       data   0x000000
-           .idata_users.o      idata   0x0001ef       data   0x000000
-           .udata_users.o      udata   0x0001ef       data   0x000000
-       .idata_Lcd_8bits.o      idata   0x0001ef       data   0x000000
-       .udata_Lcd_8bits.o      udata   0x0001ef       data   0x000000
-            .udata_main.o      udata   0x0001ef       data   0x000000
-           .idata_c018i.o      idata   0x0001ef       data   0x000000
+                 .tmpdata      udata   0x000000       data   0x000008
+                MATH_DATA      udata   0x000008       data   0x000002
+                DELAYDAT2      udata   0x00000a       data   0x000001
+                DELAYDAT1      udata   0x00000b       data   0x000001
+          .idata___init.o      idata   0x000060       data   0x000000
+          .udata___init.o      udata   0x000060       data   0x000000
+         .idata_write_B.o      idata   0x000060       data   0x000000
+         .udata_write_B.o      udata   0x000060       data   0x000000
+          .idata_read_B.o      idata   0x000060       data   0x000000
+          .udata_read_B.o      udata   0x000060       data   0x000000
+           .idata_users.o      idata   0x000060       data   0x000000
+           .udata_users.o      udata   0x000060       data   0x000000
+       .idata_Lcd_8bits.o      idata   0x000060       data   0x000000
+       .udata_Lcd_8bits.o      udata   0x000060       data   0x000000
+            .udata_main.o      udata   0x000060       data   0x000000
+           .idata_c018i.o      idata   0x000060       data   0x000000
+            .idata_main.o      idata   0x000100       data   0x0000f6
+           .udata_c018i.o      udata   0x0001f6       data   0x00000a
                    .stack      udata   0x000300       data   0x000100
             SFR_UNBANKED0      udata   0x000f62       data   0x00009e
 
@@ -80,112 +74,106 @@ Linker Map File - Created Fri Jun 15 21:06:41 2018
                               Program Memory Usage 
                                Start         End      
                            ---------   ---------      
-                            0x000000    0x001e9a      
+                            0x000000    0x001849      
                             0x300000    0x300003      
                             0x300005    0x300006      
                             0x300008    0x30000d      
-            7847 out of 33048 program addresses used, program memory utilization is 23%
+            6230 out of 33048 program addresses used, program memory utilization is 18%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                   D100_1   0x001d92    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
-                    D100x   0x001d90    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
-                   D10K_1   0x0001c2    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
-                    D10Kl   0x0001ce    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
-                    D10Kx   0x0001c0    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
-                    D10_1   0x001db0    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-                     D10x   0x001da8    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-             Delay100TCYx   0x001d84    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
-             Delay10KTCYx   0x0001b6    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
-              Delay10TCYx   0x001da0    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-            DelayFor18TCY   0x001c04    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-            DelayFor20TCY   0x001be2    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-        EEPROM_Read_Block   0x001416    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\eeprom.h
-       EEPROM_Write_Block   0x0013b2    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\eeprom.h
-               EscDataLCD   0x001c40    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-               EscInstLCD   0x001c64    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-             EscStringLCD   0x000200    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-         EscStringLCD_ROM   0x001c88    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-                Inic_Regs   0x000316    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                IniciaLCD   0x001b16    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-                    Pulse   0x001bc0    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-               Read_b_eep   0x000172    program     extern E:\3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
-            TestPixelsLCD   0x001cd2    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-            TesteBusyFlag   0x001c26    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+                   D100_1   0x0001dc    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
+                    D100x   0x0001da    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
+                   D10K_1   0x000170    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
+                    D10Kl   0x00017c    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
+                    D10Kx   0x00016e    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
+                    D10_1   0x0001fa    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+                     D10x   0x0001f2    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+             Delay100TCYx   0x0001ce    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
+             Delay10KTCYx   0x000164    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
+              Delay10TCYx   0x0001ea    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+            DelayFor18TCY   0x0015f4    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+            DelayFor20TCY   0x0015d2    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+        EEPROM_Read_Block   0x000d40    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\eeprom.h
+       EEPROM_Write_Block   0x000cdc    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\eeprom.h
+               EscDataLCD   0x001630    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+               EscInstLCD   0x001654    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+             EscStringLCD   0x000200    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+         EscStringLCD_ROM   0x001678    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+                Inic_Regs   0x0002da    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                IniciaLCD   0x001506    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+                    Pulse   0x0015b0    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+               Read_b_eep   0x000120    program     extern E:\3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
+            TestPixelsLCD   0x0016c2    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+            TesteBusyFlag   0x001616    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
               Write_b_eep   0x0000ba    program     extern E:\3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\write_B.c
-              _4jContinue   0x00014c    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcmp.asm
-                   _5jEnd   0x000156    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcmp.asm
-       _D100TCYXCODE_0008   0x001d8c    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
-       _D100TCYXCODE_0012   0x001d96    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
-       _D100TCYXCODE_0018   0x001d9c    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
-       _D10KTCYXCODE_0010   0x0001c6    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
-       _D10KTCYXCODE_001C   0x0001d2    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
-        _D10TCYXCODE_000A   0x001daa    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000C   0x001dac    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000E   0x001dae    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-              _Delay100us   0x001bca    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-                _Delay5ms   0x001bd6    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+       _D100TCYXCODE_0008   0x0001d6    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
+       _D100TCYXCODE_0012   0x0001e0    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
+       _D100TCYXCODE_0018   0x0001e6    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
+       _D10KTCYXCODE_0010   0x000174    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
+       _D10KTCYXCODE_001C   0x000180    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
+        _D10TCYXCODE_000A   0x0001f4    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000C   0x0001f6    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000E   0x0001f8    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+              _Delay100us   0x0015ba    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+                _Delay5ms   0x0015c6    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
        ___return_lbl00000   0x000004    program     static                          
-       ___return_lbl00000   0x0001aa    program     static                          
        ___return_lbl00000   0x00000c    program     static                          
-       ___return_lbl00001   0x0001fe    program     static                          
+       ___return_lbl00000   0x000158    program     static                          
+       ___return_lbl00001   0x0001cc    program     static                          
        ___return_lbl00002   0x0000b8    program     static                          
-       ___return_lbl00012   0x001c02    program     static                          
-       ___return_lbl00013   0x001c24    program     static                          
-               __config_0   0x300000    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               __config_1   0x300001    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-              __config_10   0x30000c    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-              __config_11   0x30000d    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               __config_2   0x300002    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               __config_3   0x300003    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               __config_4   0x300005    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               __config_5   0x300006    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               __config_6   0x300008    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               __config_7   0x300009    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               __config_8   0x30000a    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               __config_9   0x30000b    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+       ___return_lbl00012   0x0015f2    program     static                          
+       ___return_lbl00013   0x001614    program     static                          
+               __config_0   0x300000    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               __config_1   0x300001    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+              __config_10   0x30000c    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+              __config_11   0x30000d    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               __config_2   0x300002    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               __config_3   0x300003    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               __config_4   0x300005    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               __config_5   0x300006    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               __config_6   0x300008    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               __config_7   0x300009    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               __config_8   0x30000a    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               __config_9   0x30000b    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
                    __init   0x000006    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\__init.c
-            __zero_memory   0x001d64    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
+            __zero_memory   0x000192    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
                 _do_cinit   0x00001c    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
                    _entry   0x000000    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                 _startup   0x0001e4    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-              addPassword   0x000562    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                  addUser   0x0004fc    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-         authenticateUser   0x00167c    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
-                compare_l   0x001d7a    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
-      configInterruptTMR0   0x000b10    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               configTMR0   0x000afa    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                 _startup   0x0001b2    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+              addPassword   0x000526    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                  addUser   0x0004c0    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+         authenticateUser   0x00108a    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
+             compareArray   0x000e26    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
+                compare_l   0x0001a8    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
+      configInterruptTMR0   0x000c82    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               configTMR0   0x000c6c    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
                 copy_loop   0x00008e    program     static                          
             copy_one_byte   0x000094    program     static                          
-                  decrypt   0x000f80    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\criptografia.c
                      done   0x0000b8    program     static                          
              done_copying   0x0000a2    program     static                          
-       eepromEmptyAddress   0x0014aa    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
-                  encrypt   0x000b6a    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\criptografia.c
-          escreveCaracter   0x00062e    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-        escreveCaracterL1   0x0003f0    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-        escreveCaracterL2   0x000476    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                escreveL2   0x000604    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                 high_isr   0x000960    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                  initLCD   0x000332    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-           initTMR0_08BIT   0x000b30    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-           initTMR0_16BIT   0x000b46    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
- interrupt_at_high_vector   0x000008    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                     jEnd   0x00015c    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcmp.asm
-                    jLoop   0x000140    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcmp.asm
-                     loop   0x0001f4    program     static                          
-                   loop_h   0x001d72    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
-                   loop_l   0x001d7c    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
-                     main   0x00024a    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                   memcmp   0x000120    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcmp.asm
-              saveNewUser   0x0014fc    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
-                 saveRoot   0x00187e    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
+       eepromEmptyAddress   0x000dd4    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
+          escreveCaracter   0x0006ba    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+        escreveCaracterL1   0x0003b4    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+        escreveCaracterL2   0x00043a    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                escreveL2   0x000690    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                 high_isr   0x000ad2    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                  initLCD   0x0002f6    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+           initTMR0_08BIT   0x000ca2    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+           initTMR0_16BIT   0x000cb8    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+ interrupt_at_high_vector   0x000008    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                     loop   0x0001c2    program     static                          
+                   loop_h   0x0001a0    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
+                   loop_l   0x0001aa    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
+                     main   0x00024a    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+              saveNewUser   0x000f0c    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
+                 saveRoot   0x001274    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
                      test   0x000036    program     static                          
-               updateRoot   0x00197e    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
-               zero_block   0x001d72    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
+               updateRoot   0x001376    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
+               zero_block   0x0001a0    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
                    ADCON0   0x000fc2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
                ADCON0bits   0x000fc2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
                    ADCON1   0x000fc1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
@@ -228,8 +216,8 @@ Linker Map File - Created Fri Jun 15 21:06:41 2018
                  DDRDbits   0x000f95       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
                      DDRE   0x000f96       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
                  DDREbits   0x000f96       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
-            DelayCounter1   0x000017       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\delayd1.asm
-            DelayCounter2   0x000016       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\delayd2.asm
+            DelayCounter1   0x00000b       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\delayd1.asm
+            DelayCounter2   0x00000a       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\delayd2.asm
                   ECCP1AS   0x000fb6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
               ECCP1ASbits   0x000fb6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
                  ECCP1CON   0x000fbd       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
@@ -324,7 +312,7 @@ Linker Map File - Created Fri Jun 15 21:06:41 2018
                     RCREG   0x000fae       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
                     RCSTA   0x000fab       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
                 RCSTAbits   0x000fab       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
-                     SIGN   0x000014       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
+                     SIGN   0x000008       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
                     SPBRG   0x000faf       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
                    SPBRGH   0x000fb0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
                    SPPCFG   0x000f63       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
@@ -439,44 +427,44 @@ Linker Map File - Created Fri Jun 15 21:06:41 2018
                    WDTCON   0x000fd1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
                WDTCONbits   0x000fd1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
                      WREG   0x000fe8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
-                __FPFLAGS   0x000015       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
-            __FPFLAGSbits   0x000015       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
+                __FPFLAGS   0x000009       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
+            __FPFLAGSbits   0x000009       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
+                  __tmp_0   0x000000       data     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
+                  __tmp_0   0x000000       data     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+                  __tmp_0   0x000000       data     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
                   __tmp_0   0x000000       data     static E:\3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
                   __tmp_0   0x000000       data     static E:\3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\write_B.c
-                  __tmp_0   0x000000       data     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                  __tmp_0   0x000000       data     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\criptografia.c
-                  __tmp_0   0x000000       data     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
-                  __tmp_0   0x000000       data     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-                 connect1   0x000100       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                 connect2   0x000111       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                 controle   0x0001e4       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                curr_byte   0x0001e8       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-               curr_entry   0x0001ea       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                 data_ptr   0x0001ec       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                      dly   0x0001da       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                     init   0x000122       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-             initializing   0x0001e2       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                  invalid   0x0001bf       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                   isRoot   0x0001dc       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                    limpa   0x000133       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                 needAuth   0x0001de       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               needRepeat   0x0001e0       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               nova_senha   0x000169       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                     pass   0x000180       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-              pass_repeat   0x000186       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                 password   0x00017a       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-            position_pass   0x0001d8       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-        position_password   0x0001d2       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-            position_user   0x0001d4       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                     prom   0x0001e5       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-               qtdHashtag   0x0001d6       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-            repeatMessage   0x00019d       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-              rootMessage   0x00018c       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                    senha   0x000147       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                  success   0x0001ae       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                     user   0x000144       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               userOrPass   0x0001d0       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                  usuario   0x000158       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                 connect1   0x000100       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                 connect2   0x000111       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                 controle   0x0001f5       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                curr_byte   0x0001f9       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+               curr_entry   0x0001fb       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                 data_ptr   0x0001fd       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                      dly   0x0001eb       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                     init   0x000122       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+             initializing   0x0001f3       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                  invalid   0x0001d0       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                   isRoot   0x0001ed       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                    limpa   0x000133       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                 needAuth   0x0001ef       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               needRepeat   0x0001f1       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               nova_senha   0x000169       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                     pass   0x000180       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+              pass_repeat   0x000186       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                 password   0x00017a       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+            position_pass   0x0001e9       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+        position_password   0x0001e3       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+            position_user   0x0001e5       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                     prom   0x0001f6       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+               qtdHashtag   0x0001e7       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+            repeatMessage   0x0001ae       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+              rootMessage   0x00018c       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                    senha   0x000147       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                  success   0x0001bf       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+             successSenha   0x00019d       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                    userG   0x000144       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               userOrPass   0x0001e1       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                  usuario   0x000158       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
 
 
 
@@ -486,139 +474,133 @@ Linker Map File - Created Fri Jun 15 21:06:41 2018
                    _entry   0x000000    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
        ___return_lbl00000   0x000004    program     static                          
                    __init   0x000006    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\__init.c
- interrupt_at_high_vector   0x000008    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+ interrupt_at_high_vector   0x000008    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
        ___return_lbl00000   0x00000c    program     static                          
                 _do_cinit   0x00001c    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
                      test   0x000036    program     static                          
                 copy_loop   0x00008e    program     static                          
             copy_one_byte   0x000094    program     static                          
              done_copying   0x0000a2    program     static                          
-                     done   0x0000b8    program     static                          
        ___return_lbl00002   0x0000b8    program     static                          
+                     done   0x0000b8    program     static                          
               Write_b_eep   0x0000ba    program     extern E:\3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\write_B.c
-                   memcmp   0x000120    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcmp.asm
-                    jLoop   0x000140    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcmp.asm
-              _4jContinue   0x00014c    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcmp.asm
-                   _5jEnd   0x000156    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcmp.asm
-                     jEnd   0x00015c    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memcmp.asm
-               Read_b_eep   0x000172    program     extern E:\3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
-       ___return_lbl00000   0x0001aa    program     static                          
-             Delay10KTCYx   0x0001b6    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
-                    D10Kx   0x0001c0    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
-                   D10K_1   0x0001c2    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
-       _D10KTCYXCODE_0010   0x0001c6    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
-                    D10Kl   0x0001ce    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
-       _D10KTCYXCODE_001C   0x0001d2    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
-                 _startup   0x0001e4    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                     loop   0x0001f4    program     static                          
-       ___return_lbl00001   0x0001fe    program     static                          
-             EscStringLCD   0x000200    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-                     main   0x00024a    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                Inic_Regs   0x000316    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                  initLCD   0x000332    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-        escreveCaracterL1   0x0003f0    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-        escreveCaracterL2   0x000476    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                  addUser   0x0004fc    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-              addPassword   0x000562    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                escreveL2   0x000604    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-          escreveCaracter   0x00062e    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                 high_isr   0x000960    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               configTMR0   0x000afa    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-      configInterruptTMR0   0x000b10    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-           initTMR0_08BIT   0x000b30    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-           initTMR0_16BIT   0x000b46    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                  encrypt   0x000b6a    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\criptografia.c
-                  decrypt   0x000f80    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\criptografia.c
-       EEPROM_Write_Block   0x0013b2    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\eeprom.h
-        EEPROM_Read_Block   0x001416    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\eeprom.h
-       eepromEmptyAddress   0x0014aa    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
-              saveNewUser   0x0014fc    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
-         authenticateUser   0x00167c    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
-                 saveRoot   0x00187e    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
-               updateRoot   0x00197e    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
-                IniciaLCD   0x001b16    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-                    Pulse   0x001bc0    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-              _Delay100us   0x001bca    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-                _Delay5ms   0x001bd6    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-            DelayFor20TCY   0x001be2    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-       ___return_lbl00012   0x001c02    program     static                          
-            DelayFor18TCY   0x001c04    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-       ___return_lbl00013   0x001c24    program     static                          
-            TesteBusyFlag   0x001c26    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-               EscDataLCD   0x001c40    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-               EscInstLCD   0x001c64    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-         EscStringLCD_ROM   0x001c88    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-            TestPixelsLCD   0x001cd2    program     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-            __zero_memory   0x001d64    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
-                   loop_h   0x001d72    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
-               zero_block   0x001d72    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
-                compare_l   0x001d7a    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
-                   loop_l   0x001d7c    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
-             Delay100TCYx   0x001d84    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
-       _D100TCYXCODE_0008   0x001d8c    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
-                    D100x   0x001d90    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
-                   D100_1   0x001d92    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
-       _D100TCYXCODE_0012   0x001d96    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
-       _D100TCYXCODE_0018   0x001d9c    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
-              Delay10TCYx   0x001da0    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-                     D10x   0x001da8    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000A   0x001daa    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000C   0x001dac    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-        _D10TCYXCODE_000E   0x001dae    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-                    D10_1   0x001db0    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
-               __config_0   0x300000    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               __config_1   0x300001    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               __config_2   0x300002    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               __config_3   0x300003    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               __config_4   0x300005    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               __config_5   0x300006    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               __config_6   0x300008    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               __config_7   0x300009    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               __config_8   0x30000a    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               __config_9   0x30000b    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-              __config_10   0x30000c    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-              __config_11   0x30000d    program     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                  __tmp_0   0x000000       data     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
-                  __tmp_0   0x000000       data     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
-                  __tmp_0   0x000000       data     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\criptografia.c
+               Read_b_eep   0x000120    program     extern E:\3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
+       ___return_lbl00000   0x000158    program     static                          
+             Delay10KTCYx   0x000164    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
+                    D10Kx   0x00016e    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
+                   D10K_1   0x000170    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
+       _D10KTCYXCODE_0010   0x000174    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
+                    D10Kl   0x00017c    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
+       _D10KTCYXCODE_001C   0x000180    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10ktcyx.asm
+            __zero_memory   0x000192    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
+                   loop_h   0x0001a0    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
+               zero_block   0x0001a0    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
+                compare_l   0x0001a8    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
+                   loop_l   0x0001aa    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
+                 _startup   0x0001b2    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                     loop   0x0001c2    program     static                          
+       ___return_lbl00001   0x0001cc    program     static                          
+             Delay100TCYx   0x0001ce    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
+       _D100TCYXCODE_0008   0x0001d6    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
+                    D100x   0x0001da    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
+                   D100_1   0x0001dc    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
+       _D100TCYXCODE_0012   0x0001e0    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
+       _D100TCYXCODE_0018   0x0001e6    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d100tcyx.asm
+              Delay10TCYx   0x0001ea    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+                     D10x   0x0001f2    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000A   0x0001f4    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000C   0x0001f6    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+        _D10TCYXCODE_000E   0x0001f8    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+                    D10_1   0x0001fa    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\d10tcyx.asm
+             EscStringLCD   0x000200    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+                     main   0x00024a    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                Inic_Regs   0x0002da    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                  initLCD   0x0002f6    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+        escreveCaracterL1   0x0003b4    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+        escreveCaracterL2   0x00043a    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                  addUser   0x0004c0    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+              addPassword   0x000526    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                escreveL2   0x000690    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+          escreveCaracter   0x0006ba    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                 high_isr   0x000ad2    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               configTMR0   0x000c6c    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+      configInterruptTMR0   0x000c82    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+           initTMR0_08BIT   0x000ca2    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+           initTMR0_16BIT   0x000cb8    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+       EEPROM_Write_Block   0x000cdc    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\eeprom.h
+        EEPROM_Read_Block   0x000d40    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\eeprom.h
+       eepromEmptyAddress   0x000dd4    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
+             compareArray   0x000e26    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
+              saveNewUser   0x000f0c    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
+         authenticateUser   0x00108a    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
+                 saveRoot   0x001274    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
+               updateRoot   0x001376    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
+                IniciaLCD   0x001506    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+                    Pulse   0x0015b0    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+              _Delay100us   0x0015ba    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+                _Delay5ms   0x0015c6    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+            DelayFor20TCY   0x0015d2    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+       ___return_lbl00012   0x0015f2    program     static                          
+            DelayFor18TCY   0x0015f4    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+       ___return_lbl00013   0x001614    program     static                          
+            TesteBusyFlag   0x001616    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+               EscDataLCD   0x001630    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+               EscInstLCD   0x001654    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+         EscStringLCD_ROM   0x001678    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+            TestPixelsLCD   0x0016c2    program     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+               __config_0   0x300000    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               __config_1   0x300001    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               __config_2   0x300002    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               __config_3   0x300003    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               __config_4   0x300005    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               __config_5   0x300006    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               __config_6   0x300008    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               __config_7   0x300009    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               __config_8   0x30000a    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               __config_9   0x30000b    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+              __config_10   0x30000c    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+              __config_11   0x30000d    program     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                  __tmp_0   0x000000       data     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\users.c
+                  __tmp_0   0x000000       data     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\Lcd_8bits.c
+                  __tmp_0   0x000000       data     static C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
                   __tmp_0   0x000000       data     static E:\3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\read_B.c
                   __tmp_0   0x000000       data     static E:\3.46\pic18-lt\cxx-framework\src\pmc_common\EEP\write_B.c
-                  __tmp_0   0x000000       data     static C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                     SIGN   0x000014       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
-                __FPFLAGS   0x000015       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
-            __FPFLAGSbits   0x000015       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
-            DelayCounter2   0x000016       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\delayd2.asm
-            DelayCounter1   0x000017       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\delayd1.asm
-                 connect1   0x000100       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                 connect2   0x000111       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                     init   0x000122       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                    limpa   0x000133       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                     user   0x000144       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                    senha   0x000147       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                  usuario   0x000158       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               nova_senha   0x000169       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                 password   0x00017a       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                     pass   0x000180       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-              pass_repeat   0x000186       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-              rootMessage   0x00018c       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-            repeatMessage   0x00019d       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                  success   0x0001ae       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                  invalid   0x0001bf       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               userOrPass   0x0001d0       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-        position_password   0x0001d2       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-            position_user   0x0001d4       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               qtdHashtag   0x0001d6       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-            position_pass   0x0001d8       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                      dly   0x0001da       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                   isRoot   0x0001dc       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                 needAuth   0x0001de       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-               needRepeat   0x0001e0       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-             initializing   0x0001e2       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                 controle   0x0001e4       data     extern C:\Users\aluno\Desktop\David\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
-                     prom   0x0001e5       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                curr_byte   0x0001e8       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-               curr_entry   0x0001ea       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
-                 data_ptr   0x0001ec       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                     SIGN   0x000008       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
+                __FPFLAGS   0x000009       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
+            __FPFLAGSbits   0x000009       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
+            DelayCounter2   0x00000a       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\delayd2.asm
+            DelayCounter1   0x00000b       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\delays\delayd1.asm
+                 connect1   0x000100       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                 connect2   0x000111       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                     init   0x000122       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                    limpa   0x000133       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                    userG   0x000144       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                    senha   0x000147       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                  usuario   0x000158       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               nova_senha   0x000169       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                 password   0x00017a       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                     pass   0x000180       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+              pass_repeat   0x000186       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+              rootMessage   0x00018c       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+             successSenha   0x00019d       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+            repeatMessage   0x0001ae       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                  success   0x0001bf       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                  invalid   0x0001d0       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               userOrPass   0x0001e1       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+        position_password   0x0001e3       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+            position_user   0x0001e5       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               qtdHashtag   0x0001e7       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+            position_pass   0x0001e9       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                      dly   0x0001eb       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                   isRoot   0x0001ed       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                 needAuth   0x0001ef       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+               needRepeat   0x0001f1       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+             initializing   0x0001f3       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                 controle   0x0001f5       data     extern C:\Users\Projetos\Desktop\workspace\trabalho-micro\MPlab\TrabalhoN2Micro.X\main.c
+                     prom   0x0001f6       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                curr_byte   0x0001f9       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+               curr_entry   0x0001fb       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                 data_ptr   0x0001fd       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
                   SPPDATA   0x000f62       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
                    SPPCFG   0x000f63       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
                SPPCFGbits   0x000f63       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f4550.asm
