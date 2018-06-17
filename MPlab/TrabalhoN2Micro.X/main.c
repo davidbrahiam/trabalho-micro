@@ -511,10 +511,10 @@ void high_isr(void) {
             controle = 4;
 
         } else if (col_4 && controle == 4) {
-            if (row_1) escreveCaracter('A');
-            else if (row_2) escreveCaracter('B');
-            else if (row_3) escreveCaracter('C');
-            else if (row_4) eliminarCaracter();
+//            if (row_1) escreveCaracter('A');
+//            else if (row_2) escreveCaracter('B');
+//            else if (row_3) escreveCaracter('C');
+            if (row_4) eliminarCaracter();
             col_1 = 1;
             col_2 = 0;
             col_3 = 0;
