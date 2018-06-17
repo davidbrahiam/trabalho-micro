@@ -1,14 +1,14 @@
 /*********************************************************************
-Nome do arquivo:	main_32.c            
-Data:	    		29 de mar?o de 2010          
-Versao:				1.0                              
-MPLAB IDE:			v8.20a 
-Autor:				Wagner Zanco              
-*********************************************************************/
-#include <p18f4550.h>			//diretiva de compila??o
-//#include <delays.h>			//diretiva de compila??o
+Nome do arquivo:    main_32.c            
+Data:               29 de mar?o de 2010          
+Versao:             1.0                              
+MPLAB IDE:          v8.20a 
+Autor:              Wagner Zanco              
+ *********************************************************************/
+#include <p18f4550.h>           //diretiva de compila??o
+//#include <delays.h>           //diretiva de compila??o
 #include "MCC18_18F4550.h"
-#include "Lcd_8bits.h"			//diretiva de compila??o
+#include "Lcd_8bits.h"          //diretiva de compila??o
 #include <stdio.h>
 #include <stdlib.h>
 //#include "eeprom.h"
@@ -29,7 +29,7 @@ void initTMR0_08BIT(unsigned char); //inicializa o contador de 8 bits do TIMER0
 void initTMR0_16BIT(unsigned int); //inicializa o contador de 16 bits do TIMER0
 void configInterruptTMR0(unsigned char); //inicializa ineterrup??o
 void high_isr(void); //trata a interrup??o
-void Inic_Regs (void);
+void Inic_Regs(void);
 void escreveLed(char esc);
 void initLCD(void);
 char timer0(void);
@@ -38,32 +38,38 @@ void escreveCaracterL2(char esc[17]);
 
 //******************************************************************************
 // Declara??o de vari?veis globais
-unsigned char connect1 [17] = "Connecting...";                  //declara??o de vetor inicializado
-unsigned char connect2 [17] = "Please Wait!";                  //declara??o de vetor inicializado
-unsigned char init [17] =    "OK!";                  //declara??o de vetor inicializado
-unsigned char limpa [17] = " ";                  //declara??o de vetor inicializado
-unsigned char userG [3] = "";                  //declara??o de vetor inicializado
-unsigned char senha [17] = "SENHA:";                  //declara??o de vetor inicializado
-unsigned char usuario [17] = "USUARIO:";                  //declara??o de vetor inicializado
-unsigned char nova_senha [17] = "NOVA SENHA:";                  //declara??o de vetor inicializado
+unsigned char connect1 [17] = "Connecting..."; //declara??o de vetor inicializado
+unsigned char connect2 [17] = "Please Wait!"; //declara??o de vetor inicializado
+unsigned char init [17] = "OK!"; //declara??o de vetor inicializado
+unsigned char limpa [17] = " "; //declara??o de vetor inicializado
+unsigned char userG [3] = ""; //declara??o de vetor inicializado
+unsigned char senha [17] = "SENHA:"; //declara??o de vetor inicializado
+unsigned char usuario [17] = "USUARIO:"; //declara??o de vetor inicializado
+unsigned char nova_senha [17] = "NOVA SENHA:"; //declara??o de vetor inicializado
+//unsigned char novo_usuario [17] = "NOVO USUARIO:"; //declara??o de vetor inicializado
 unsigned char password[6] = "";
 unsigned char pass[6] = "";
-unsigned char pass_repeat[6]="";
-unsigned char rootMessage [17]= "ROOT:";
-unsigned char successSenha [17]= "SENHA OK! ";
-unsigned char repeatMessage [17]= "REPETE:          ";
-unsigned char success [17] =  "SEJA BEM VINDO! ";                  //declara??o de vetor inicializado
-unsigned char invalid [17] = "SENHA INVALIDA  ";                  //declara??o de vetor inicializado
+unsigned char pass_repeat[6] = "";
+unsigned char newUser [3] = ""; //declara??o de vetor inicializado
+unsigned char rootMessage [17] = "ROOT:";
+unsigned char successSenha [17] = "SENHA OK! ";
+unsigned char repeatMessage [17] = "REPETE:          ";
+unsigned char success [17] = "SEJA BEM VINDO! "; //declara??o de vetor inicializado
+unsigned char invalid [17] = "SENHA INVALIDA  "; //declara??o de vetor inicializado
 
-int userOrPass = 1;                                               // 1=user e 0=passward
+
+int userOrPass = 1; // 1=user e 0=passward
+int position_new_user = 0;
 int position_password = 0;
 int position_user = 0;
 int qtdHashtag = 0;
+int qtdAsterisco = 0;
 int position_pass = 0;
 int dly = 0;
 int isRoot = 0;
-int needAuth=1;
-int needRepeat=1;
+int isNewUser = 0;
+int needAuth = 1;
+int needRepeat = 1;
 int initializing = 1;
 char controle = 1;
 //******************************************************************************
@@ -80,40 +86,41 @@ void interrupt_at_high_vector(void) {
 #pragma code
 
 //********************************************************************
-void main(void)										//fun??o main					
-{       
+
+void main(void) //fun??o main                   
+{
     unsigned char userT[3] = "000";
     unsigned char passwordT[6] = "122436";
-    Inic_Regs ();									//configurar SFRs
+    Inic_Regs(); //configurar SFRs
     // Configura??o do TIMER0
     configTMR0(0b11000000); //Passo 1
     initTMR0_08BIT(50); //Passo 2
     configInterruptTMR0(1); //Passo 3
     INTCONbits.PEIE = 1;
-//**********************************
-	
-	IniciaLCD (2);									//inicializar LCD controller HD44780
+    //**********************************
+
+    IniciaLCD(2); //inicializar LCD controller HD44780
     initLCD();
 
-//**********************************
+    //**********************************
 
-// salva um novo usuário root caso não exista nenhum
-saveRoot();
-//if(updateRoot(senha)) escreveCaracterL1(success);
-//EEPROM_Read_Block(0x40, read, 8);
-saveNewUser(userT, passwordT);
-//if (authenticateUser(buf, buf02)) {
-//    escreveCaracterL1(success);
-//} else {
-//    escreveCaracterL1(invalid);
-//}
+    // salva um novo usuário root caso não exista nenhum
+    saveRoot();
+    //if(updateRoot(senha)) escreveCaracterL1(success);
+    //EEPROM_Read_Block(0x40, read, 8);
+    saveNewUser(userT, passwordT);
+    //if (authenticateUser(buf, buf02)) {
+    //    escreveCaracterL1(success);
+    //} else {
+    //    escreveCaracterL1(invalid);
+    //}
 
-	while(1);										//loop infinito    		
+    while (1); //loop infinito          
 }
+
 /*******************************************************************
 Esta funcao inicializa os resgistradores SFRs.*/
-void Inic_Regs (void)
-{
+void Inic_Regs(void) {
     TRISA = 0x00; //PORTA sa?da
     TRISB = 0x00; //PORTB sa?da
     TRISC = 0x00; //PORTC sa?da
@@ -125,25 +132,25 @@ void Inic_Regs (void)
     PORTC = 0; //limpa PORTC
     PORTD = 0xFF; //apaga displays
     PORTE = 0; //limpa PORTE
-//********************************************************************
+    //********************************************************************
 }
 
-void initLCD(){
+void initLCD() {
     EscInstLCD(0x01); //limpa display e mostra cursor piscando na primeira posi??o da primmeira linha
     while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
-    
+
     escreveCaracterL1(connect1);
     escreveCaracterL2(connect2);
-    
+
     //delay de 3 segundos
-	for(dly=0;dly<50;dly++) _Delay5ms();
-    
+    for (dly = 0; dly < 50; dly++) _Delay5ms();
+
     escreveCaracterL1(init);
     escreveCaracterL2(limpa);
-    
+
     //delay de 3 segundos
-	for(dly=0;dly<50;dly++) _Delay5ms();
-    
+    for (dly = 0; dly < 50; dly++) _Delay5ms();
+
     escreveCaracterL1(usuario);
     EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
     while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
@@ -151,32 +158,32 @@ void initLCD(){
 }
 
 void escreveCaracterL1(char esc[17]) {
-    int i=0;
+    int i = 0;
     EscInstLCD(0x80); //posiciona cursor na primeir aposic??o  da segunda linha
     while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
-    for(i=0;i<17;i++)						//comando de itera??o
-	{
-		EscDataLCD(esc[i]); //escreve string no LCD					
+    for (i = 0; i < 17; i++) //comando de itera??o
+    {
+        EscDataLCD(esc[i]); //escreve string no LCD                 
         while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
-	}
+    }
 }
 
 void escreveCaracterL2(char esc[17]) {
-    int i=0;
+    int i = 0;
     EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
     while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
-    for(i=0;i<17;i++)						//comando de itera??o
-	{
-		EscDataLCD(esc[i]); //escreve string no LCD					
+    for (i = 0; i < 17; i++) //comando de itera??o
+    {
+        EscDataLCD(esc[i]); //escreve string no LCD                 
         while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
-	}
+    }
 }
 
-void addUser(char x){
+void addUser(char x) {
     userG[position_user] = x;
     position_user++;
     //userOrPass = 1;
-    if(position_user == 3 ){
+    if (position_user == 3) {
         userOrPass = 0;
         escreveCaracterL1(senha);
         escreveCaracterL2(limpa);
@@ -185,72 +192,72 @@ void addUser(char x){
     }
 }
 
-void addPassword(char x){
+void addPassword(char x) {
     password[position_password] = x;
     position_password++;
-    if(position_password == 6 ){
+    if (position_password == 6) {
         position_password = 0;
         position_user = 0;
         if (authenticateUser(userG, password)) {
             PORTCbits.RC0 = 1;
             escreveCaracterL1(success);
-            for(dly=0;dly<50;dly++) _Delay5ms();
+            for (dly = 0; dly < 50; dly++) _Delay5ms();
             PORTCbits.RC0 = 0;
         } else {
             PORTCbits.RC1 = 1;
             escreveCaracterL1(invalid);
-            for(dly=0;dly<50;dly++) _Delay5ms();
+            for (dly = 0; dly < 50; dly++) _Delay5ms();
             PORTCbits.RC1 = 0;
         }
         escreveCaracterL2(limpa);
         //delay de 3 segundos
-        for(dly=0;dly<50;dly++) _Delay5ms();
-        userOrPass = 1;  // valida senha
+        for (dly = 0; dly < 50; dly++) _Delay5ms();
+        userOrPass = 1; // valida senha
         escreveCaracterL1(usuario);
         escreveCaracterL2(limpa);
         EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
         while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
-        for(dly=0;dly<50;dly++) _Delay5ms();
+        for (dly = 0; dly < 50; dly++) _Delay5ms();
     }
 }
 
-void escreveL2(char x){
+void escreveL2(char x) {
     pass[position_pass] = x;
     position_pass++;
 }
 
 void escreveCaracter(char esc) {
-    if(initializing) return;
-    if(isRoot){
+    if (initializing) return;
+    if (isRoot) {
         escreveL2(esc);
         EscDataLCD('*'); //escreve string no LCD quando é senha
         while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
         Delay10KTCYx(20);
-        if(position_pass == 6){
-            int i = 0;
-            position_pass=0;
+        if (position_pass == 6) {
+            position_pass = 0;
             position_user = 0;
-            for(i=0;i<3;i++) userG[i] = '9';
-            if(needAuth){
-                if (authenticateUser(userG, pass)){
-                    needAuth=0;
-                    needRepeat=1;
+            if (needAuth) {
+                int i = 0;
+                for (i = 0; i < 3; i++) userG[i] = '9';
+                if (authenticateUser(userG, pass)) {
+                    needAuth = 0;
+                    needRepeat = 1;
                     escreveCaracterL1(nova_senha);
                     escreveCaracterL2(limpa);
-                }else{
-                    isRoot=0;
-                    needRepeat=1;
-                    needAuth=1;
-                    userOrPass=1;
+                } else {
+                    isRoot = 0;
+                    needRepeat = 1;
+                    needAuth = 1;
+                    userOrPass = 1;
                     escreveCaracterL1(invalid);
                     escreveCaracterL2(limpa);
                     Delay10KTCYx(20);
                     escreveCaracterL1(usuario);
                 }
-            }else if(needRepeat){
-                int i =0;
+            } else if (needRepeat) {
+                int i = 0;
                 unsigned char message [17] = "ROOT: 999";
-                for(i=0;i<6;i++)pass_repeat[i] = pass[i];
+                for (i = 0; i < 6; i++)pass_repeat[i] = pass[i];
                 escreveCaracterL1(message);
                 EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
                 while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
@@ -261,29 +268,28 @@ void escreveCaracter(char esc) {
                 EscDataLCD('T');
                 EscDataLCD('E');
                 EscDataLCD(':');
-                needRepeat=0;
+                needRepeat = 0;
                 return;
-            } else{
+            } else {
                 int j = 1;
-                int i =0;
-                position_pass=0;
-                position_password=0;
-                position_user=0;
-                isRoot=0;
-                needRepeat=1;
-                needAuth=1;
-                userOrPass=1;
-                for(i=0;i<6;i++){
-                    if(j){
-                        if(pass_repeat[i] == pass[i])j=1;
-                        else j =0;
+                int i = 0;
+                position_pass = 0;
+                position_password = 0;
+                position_user = 0;
+                isRoot = 0;
+                needRepeat = 1;
+                needAuth = 1;
+                userOrPass = 1;
+                for (i = 0; i < 6; i++) {
+                    if (j) {
+                        if (pass_repeat[i] == pass[i])j = 1;
+                        else j = 0;
                     } else break;
                 }
-                if(j){
+                if (j) {
                     updateRoot(pass);
                     escreveCaracterL1(successSenha);
-                }
-                else escreveCaracterL1(invalid);
+                } else escreveCaracterL1(invalid);
                 escreveCaracterL2(limpa);
                 Delay10KTCYx(20);
                 escreveCaracterL1(usuario);
@@ -292,9 +298,123 @@ void escreveCaracter(char esc) {
             EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
             while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
         }
-    }else{
+    } else if (isNewUser) {
+        if (needAuth) {
+            escreveL2(esc);
+            EscDataLCD('*');
+            while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+            Delay10KTCYx(20);
+            if (position_pass == 6) {
+                int i = 0;
+                position_pass = 0;
+                position_user = 0;
+                for (i = 0; i < 3; i++) userG[i] = '9';
+                if (authenticateUser(userG, pass)) {
+                    unsigned char novo_usuario [17] = "NOVO USUARIO:";
+                    needAuth = 0;
+                    needRepeat = 1;
+                    userOrPass = 1;
+                    escreveCaracterL1(novo_usuario);
+                    escreveCaracterL2(limpa);
+                    Delay10KTCYx(20);
+                    EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
+                    while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+                } else {
+                    isNewUser = 0;
+                    needRepeat = 1;
+                    needAuth = 1;
+                    userOrPass = 1;
+                    escreveCaracterL1(invalid);
+                    escreveCaracterL2(limpa);
+                    Delay10KTCYx(20);
+                    escreveCaracterL1(usuario);
+                    EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
+                    while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+                }
+            }
+        } else if (userOrPass) {
+            escreveL2(esc);
+            EscDataLCD(esc);
+            while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+            Delay10KTCYx(20);
+            if (position_pass == 3) {
+                int i = 0;
+                position_pass = 0;
+                position_user = 0;
+                needRepeat = 1;
+                userOrPass = 0;
+                for (i = 0; i < 3; i++) userG[i] = pass[i];
+                escreveCaracterL1(senha);
+                escreveCaracterL2(limpa);
+                Delay10KTCYx(20);
+                EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
+                while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+            }            
+        } else if (needRepeat) {
+            escreveL2(esc);
+            EscDataLCD('*');
+            while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+            Delay10KTCYx(20);
+            if (position_pass == 6) {
+                int i = 0;
+                position_pass = 0;
+                EscInstLCD(0x80);
+                while (TesteBusyFlag()); 
+                EscDataLCD('R');
+                EscDataLCD('O');
+                EscDataLCD('O');
+                EscDataLCD('T');
+                EscDataLCD(':');
+                EscDataLCD(' ');
+                while (TesteBusyFlag()); 
+                for (i = 0; i < 3; i++) EscDataLCD(userG[i]);
+                EscInstLCD(0xC0); 
+                while (TesteBusyFlag()); 
+                for (i = 0; i < 6; i++)pass_repeat[i] = pass[i];
+                EscDataLCD('R');
+                EscDataLCD('E');
+                EscDataLCD('P');
+                EscDataLCD('E');
+                EscDataLCD('T');
+                EscDataLCD('E');
+                EscDataLCD(':');
+                needRepeat = 0;
+            }
+        }else{
+            escreveL2(esc);
+            EscDataLCD('kk');
+            while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+            Delay10KTCYx(20);
+            if (position_pass == 6) {
+                int j = 1;
+                int i = 0;
+                position_pass = 0;
+                position_password = 0;
+                position_user = 0;
+                isNewUser = 0;
+                needRepeat = 1;
+                needAuth = 1;
+                userOrPass = 1;
+                for (i = 0; i < 6; i++) {
+                    if (j) {
+                        if (pass_repeat[i] == pass[i])j = 1;
+                        else j = 0;
+                    } else break;
+                }
+                if (j) {
+                    saveNewUser(userG, pass);
+                    escreveCaracterL1(successSenha);
+                } else escreveCaracterL1(invalid);
+                escreveCaracterL2(limpa);
+                Delay10KTCYx(20);
+                escreveCaracterL1(usuario);
+                EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
+                while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+            }
+        }
+    } else {
         if (userOrPass) {
-            EscDataLCD(esc); //escreve string no LCD quando não é senha	
+            EscDataLCD(esc); //escreve string no LCD quando não é senha   
         } else {
             EscDataLCD('*'); //escreve string no LCD quando é senha
         }
@@ -307,21 +427,38 @@ void escreveCaracter(char esc) {
         } else {
             addUser(esc);
         }
-        if ('*' == esc){
-            qtdHashtag++;
-            if(qtdHashtag==3){
-                isRoot=1;
+        if ('*' == esc) {
+            qtdAsterisco++;
+            if (qtdAsterisco == 3) {
+                isRoot = 1;
                 escreveCaracterL1(rootMessage);
                 escreveCaracterL2(limpa);
                 Delay10KTCYx(20);
                 EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
                 while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
-                qtdHashtag=0;
+                qtdAsterisco = 0;
             }
-        }
+        } else qtdAsterisco = 0;
+
+        if ('#' == esc) {
+            qtdHashtag++;
+            if (qtdHashtag == 4) {
+                unsigned char cadastroL1 [17] = "MODO DE CADASTRO";
+                unsigned char cadastroL2 [17] = "  DE USUARIOS   ";
+                escreveCaracterL1(cadastroL1);
+                escreveCaracterL2(cadastroL2);
+                Delay10KTCYx(50);
+                escreveCaracterL1(rootMessage);
+                escreveCaracterL2(limpa);
+                Delay10KTCYx(20);
+                EscInstLCD(0xC0); //posiciona cursor na primeir aposic??o  da segunda linha
+                while (TesteBusyFlag()); //espera LCD controller terminar de executar instru??o
+                qtdHashtag = 0;
+                isNewUser = 1;
+                needAuth = 1;
+            }
+        } else qtdHashtag = 0;
     }
-    
-    
 }
 
 
@@ -423,4 +560,3 @@ void initTMR0_16BIT(unsigned int initTMR0) {
     TMR0H = initTMR0 >> 8;
     TMR0L = initTMR0;
 }
-
