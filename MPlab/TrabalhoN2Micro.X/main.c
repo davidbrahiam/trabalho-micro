@@ -42,11 +42,11 @@ unsigned char connect1 [17] = "Connecting...";                  //declara??o de 
 unsigned char connect2 [17] = "Please Wait!";                  //declara??o de vetor inicializado
 unsigned char init [17] =    "OK!";                  //declara??o de vetor inicializado
 unsigned char limpa [17] = " ";                  //declara??o de vetor inicializado
-unsigned char userG [3] = "";                  //declara??o de vetor inicializado
+static unsigned char userG [3] = "";                  //declara??o de vetor inicializado
 unsigned char senha [17] = "SENHA:";                  //declara??o de vetor inicializado
 unsigned char usuario [17] = "USUARIO:";                  //declara??o de vetor inicializado
 unsigned char nova_senha [17] = "NOVA SENHA:";                  //declara??o de vetor inicializado
-unsigned char password[6] = "";
+static unsigned char passwordG[6] = "";
 unsigned char pass[6] = "";
 unsigned char pass_repeat[6]="";
 unsigned char rootMessage [17]= "ROOT:";
@@ -54,6 +54,7 @@ unsigned char successSenha [17]= "SENHA OK! ";
 unsigned char repeatMessage [17]= "REPETE:          ";
 unsigned char success [17] =  "SEJA BEM VINDO! ";                  //declara??o de vetor inicializado
 unsigned char invalid [17] = "SENHA INVALIDA  ";                  //declara??o de vetor inicializado
+//unsigned char buffer[sizeof(unsigned long)*8+1];
 
 int userOrPass = 1;                                               // 1=user e 0=passward
 int position_password = 0;
@@ -84,6 +85,17 @@ void main(void)										//fun??o main
 {       
     unsigned char userT[3] = "000";
     unsigned char passwordT[6] = "122436";
+    unsigned long keyL[4] = {
+        0x00112233,
+        0x44556677,
+        0x8899aabb,
+        0xccddeeff
+    };
+    int i;
+//    unsigned long keyL[4];
+//    unsigned char buffer[sizeof(unsigned long)*8];
+//    unsigned long *passwordL;
+    
     Inic_Regs ();									//configurar SFRs
     // Configura??o do TIMER0
     configTMR0(0b11000000); //Passo 1
@@ -95,13 +107,26 @@ void main(void)										//fun??o main
 	IniciaLCD (2);									//inicializar LCD controller HD44780
     initLCD();
 
-//**********************************
+//**********************************    
+//for (i = 0; i < sizeof(keyC); i++) keyL[i] = atoul(keyC[i]);
+//for (i = 0; i < sizeof(password); i++) passwordL[i] = atoul(passwordT[i]);
+//*passwordL = atoul(passwordT);
+
+//encrypt(passwordL, keyL);
+//ultoa(*passwordL, buffer);
+//for (i = 0; i < sizeof(passwordL); i++) ultoa(passwordL[i], buffer[i]);
+
+//decrypt(passwordL, keyL);
+//for (i = 0; i < sizeof(passwordL); i++) ultoa(passwordL[i], passwordT[i]);
+//ultoa(*passwordL, buffer);
 
 // salva um novo usuário root caso não exista nenhum
 saveRoot();
+//saveNewUser(userT, passwordT);
+//authenticateUser(userT, passwordT);
 //if(updateRoot(senha)) escreveCaracterL1(success);
 //EEPROM_Read_Block(0x40, read, 8);
-saveNewUser(userT, passwordT);
+//saveNewUser(userT, passwordT);
 //if (authenticateUser(buf, buf02)) {
 //    escreveCaracterL1(success);
 //} else {
@@ -186,12 +211,12 @@ void addUser(char x){
 }
 
 void addPassword(char x){
-    password[position_password] = x;
+    passwordG[position_password] = x;
     position_password++;
     if(position_password == 6 ){
         position_password = 0;
         position_user = 0;
-        if (authenticateUser(userG, password)) {
+        if (authenticateUser(userG, passwordG)) {
             PORTCbits.RC0 = 1;
             escreveCaracterL1(success);
             for(dly=0;dly<50;dly++) _Delay5ms();

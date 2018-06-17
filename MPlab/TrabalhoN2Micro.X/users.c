@@ -10,6 +10,16 @@ Autor:				Álefe Macedo
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "criptografia.h"
+
+static unsigned long *passwordL;
+static unsigned long keyL[4] = {
+    0x00112233,
+    0x44556677,
+    0x8899aabb,
+    0xccddeeff
+};
+static unsigned char buffer[sizeof(unsigned long)*8];
 
 // Funções
 /*******************************************************************/
@@ -23,6 +33,43 @@ unsigned char eepromEmptyAddress() {
             break;
       }
       Delay10TCYx(1);
+    }
+}
+
+void concatID(unsigned char *id, unsigned char *bufferID)
+{
+    unsigned char initID[1] = "U";
+    unsigned char endID[1] = "#";
+    
+    memcpy(bufferID, initID, 1);
+    memcpy(bufferID+1, id, 3);
+    memcpy(bufferID+strlen(bufferID), endID, 1);
+    
+}
+
+void concatPASS(unsigned char *password, unsigned char *bufferPASS)
+{
+    unsigned char initPASS[1] = "P";
+    unsigned char endPASS[1] = "#";
+        
+    memcpy(bufferPASS, initPASS, 1);
+    memcpy(bufferPASS+1, password, strlen(password));
+    memcpy(bufferPASS+strlen(bufferPASS), endPASS, 1);
+    
+}
+
+void extractData(unsigned char *buffer) {
+    int i = 1;
+    while(1) { 
+        if(*(buffer+i) == 0x23) {
+            *(buffer+(i-1)) = 0;
+            *(buffer+i) = 0;
+            break;
+        } else {
+            *(buffer+(i-1)) = *(buffer+i);  
+        }
+        
+        i++;
     }
 }
 
@@ -42,44 +89,31 @@ int compareArray(unsigned char *a,unsigned char *b)	{
 }
 
 // Recebe um id e uma senha para salvar um novo usuário 
-void saveNewUser(unsigned char *id, unsigned char *password) {
-    unsigned char bufferID[50];
+void saveNewUser(static unsigned char *id, static unsigned char *password) {
+    unsigned char bufferID[50]; 
     unsigned char bufferPASS[50];
-    unsigned char i = 1;
     unsigned char address = eepromEmptyAddress();
+    memset(bufferID, 0, 50);    
+    memset(bufferPASS, 0, 50);
+    memset(buffer, 0, sizeof(unsigned long)*8);
     
-    *(bufferID+0) = 0x55;
-    *(bufferPASS+0) = 0x50;
+//    strncpy(buffer, password, 6);
+    *passwordL = atoul(password);
+//    memset(buffer, 0, sizeof(unsigned long)*8);
     
-    while (1) {
-        if (*id == 0x00 || i > 3) {
-            *(bufferID+i) = 0x23;
-            break;
-        }
-        *(bufferID+i) = *id; 
-        id++;
-        i++;
-    }
+    encrypt(passwordL, keyL);
+    ultoa(*passwordL, buffer);
     
+    concatID(id, bufferID);    
+    concatPASS(buffer, bufferPASS);
+
     //escreve na eeprom o id do novo usuário
     EEPROM_Write_Block(
             address,
             bufferID
     );
     
-    address = address + (i+1);
-    
-    i = 1;
-    while (1) {
-        if (*password == 0x00 || i > 6) {
-            *(bufferPASS+i) = 0x23;
-            break;
-        }
-        *(bufferPASS+i) = *password; 
-        password++;
-        i++;
-    }     
-    
+    address = address + strlen(bufferID);
     //escreve na eeprom a senha do novo usuário
     EEPROM_Write_Block(
             address,
@@ -88,35 +122,26 @@ void saveNewUser(unsigned char *id, unsigned char *password) {
 }
 
 // Autentica os dados de um usuário de acordo com os dados salvos na eeprom
-int authenticateUser(unsigned char *id, unsigned char *password) {
+int authenticateUser(static unsigned char *id, static unsigned char *password) {
     unsigned char bufferID[25];
     unsigned char bufferPASS[35];
     unsigned char read[50];                      //buffer para leitura da eeprom
     unsigned char address = 0x00;
-    unsigned char i = 1;
-    *(bufferID+0) = 0x55;
-    *(bufferPASS+0) = 0x50;
     
-    while (1) {
-        if (*id == 0x00 || i > 3) {
-            *(bufferID+i) = 0x23;
-            break;
-        }
-        *(bufferID+i) = *id; 
-        id++;
-        i++;
-    }  
+    memset(bufferID, 0, 25);    
+    memset(bufferPASS, 0, 35);
+    memset(read, 0, 50);
+    memset(buffer, 0, sizeof(unsigned long)*8);
     
-    i = 1;
-    while (1) {
-        if (*password == 0x00 || i > 6) {
-            *(bufferPASS+i) = 0x23;
-            break;
-        }
-        *(bufferPASS+i) = *password; 
-        password++;
-        i++;
-    }
+    strncpy(buffer, password, 6);
+    
+    *passwordL = atoul(buffer);
+    encrypt(passwordL, keyL);
+    ultoa(*passwordL, buffer);
+    
+    concatID(id, bufferID);    
+//    concatPASS(password, bufferPASS);
+  
     
     //le da eeprom
     while (1) {
@@ -126,8 +151,9 @@ int authenticateUser(unsigned char *id, unsigned char *password) {
         
         if(compareArray(read, bufferID)) {
             address += (EEPROM_Read_Block(address, read) + 1);
+            extractData(read);           
             
-            if(compareArray(read, bufferPASS)) return 1;
+            if(compareArray(buffer, read)) return 1;
             else return 0;
             
             break;

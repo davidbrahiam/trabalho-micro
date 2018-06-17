@@ -1,8 +1,7 @@
 #configurações de usuário local
 *.DBK
 *.PWI
-/MPlab/TrabalhoN2Micro.X/nbproject/
 *.err
 *.cof
-./MPlab/TrabalhoN2Micro.X/build/*
-./MPlab/TrabalhoN2Micro.X/dist/*
+./MPlab/TrabalhoN2Micro.X/build/
+./MPlab/TrabalhoN2Micro.X/dist/
