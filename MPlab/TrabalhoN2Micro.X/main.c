@@ -39,24 +39,25 @@ void eliminarCaracter(void);
 
 //******************************************************************************
 // Declara??o de vari?veis globais
-unsigned char limpa [17] = " "; //declara??o de vetor inicializado
-unsigned char userG [3] = ""; //declara??o de vetor inicializado
-unsigned char senha [17] = "SENHA:"; //declara??o de vetor inicializado
-unsigned char usuario [17] = "USUARIO:"; //declara??o de vetor inicializado
-unsigned char nova_senha [17] = "NOVA SENHA:"; //declara??o de vetor inicializado
-unsigned char password[6] = "";
+unsigned char connect1 [17] = "Connecting...";                  //declara??o de vetor inicializado
+unsigned char connect2 [17] = "Please Wait!";                  //declara??o de vetor inicializado
+unsigned char init [17] =    "OK!";                  //declara??o de vetor inicializado
+unsigned char limpa [17] = " ";                  //declara??o de vetor inicializado
+static unsigned char userG [3] = "";                  //declara??o de vetor inicializado
+unsigned char senha [17] = "SENHA:";                  //declara??o de vetor inicializado
+unsigned char usuario [17] = "USUARIO:";                  //declara??o de vetor inicializado
+unsigned char nova_senha [17] = "NOVA SENHA:";                  //declara??o de vetor inicializado
+static unsigned char passwordG[6] = "";
 unsigned char pass[6] = "";
-unsigned char pass_repeat[6] = "";
-unsigned char newUser [3] = ""; //declara??o de vetor inicializado
-unsigned char rootMessage [17] = "ROOT:";
-unsigned char successSenha [17] = "SENHA OK! ";
-unsigned char alterRootL1 [17] =  "MOD. ALTERACAO";
-unsigned char alterRootL2 [17] =  "DE USUARIO ROOT";
-unsigned char repeatMessage [17] = "REPETE:          ";
-unsigned char success [17] = "SEJA BEM VINDO! "; //declara??o de vetor inicializado
-unsigned char invalid [17] = "SENHA INVALIDA  "; //declara??o de vetor inicializado
+unsigned char pass_repeat[6]="";
+unsigned char rootMessage [17]= "ROOT:";
+unsigned char successSenha [17]= "SENHA OK! ";
+unsigned char repeatMessage [17]= "REPETE:          ";
+unsigned char success [17] =  "SEJA BEM VINDO! ";                  //declara??o de vetor inicializado
+unsigned char invalid [17] = "SENHA INVALIDA  ";                  //declara??o de vetor inicializado
+//unsigned char buffer[sizeof(unsigned long)*8+1];
 
-int userOrPass = 1; // 1=user e 0=passward
+int userOrPass = 1;                                               // 1=user e 0=passward
 int position_password = 0;
 int position_user = 0;
 int qtdHashtag = 0;
@@ -82,10 +83,22 @@ void interrupt_at_high_vector(void) {
 #pragma code
 
 //********************************************************************
-
-void main(void) //fun??o main                   
-{
-    Inic_Regs(); //configurar SFRs
+void main(void)										//fun??o main					
+{       
+    unsigned char userT[3] = "000";
+    unsigned char passwordT[6] = "122436";
+    unsigned long keyL[4] = {
+        0x00112233,
+        0x44556677,
+        0x8899aabb,
+        0xccddeeff
+    };
+    int i;
+//    unsigned long keyL[4];
+//    unsigned char buffer[sizeof(unsigned long)*8];
+//    unsigned long *passwordL;
+    
+    Inic_Regs ();									//configurar SFRs
     // Configura??o do TIMER0
     configTMR0(0b11000000); //Passo 1
     initTMR0_08BIT(50); //Passo 2
@@ -93,8 +106,31 @@ void main(void) //fun??o main
     INTCONbits.PEIE = 1;
     //**********************************
 
-    IniciaLCD(2); //inicializar LCD controller HD44780
-    initLCD();
+//**********************************    
+//for (i = 0; i < sizeof(keyC); i++) keyL[i] = atoul(keyC[i]);
+//for (i = 0; i < sizeof(password); i++) passwordL[i] = atoul(passwordT[i]);
+//*passwordL = atoul(passwordT);
+
+//encrypt(passwordL, keyL);
+//ultoa(*passwordL, buffer);
+//for (i = 0; i < sizeof(passwordL); i++) ultoa(passwordL[i], buffer[i]);
+
+//decrypt(passwordL, keyL);
+//for (i = 0; i < sizeof(passwordL); i++) ultoa(passwordL[i], passwordT[i]);
+//ultoa(*passwordL, buffer);
+
+// salva um novo usuário root caso não exista nenhum
+saveRoot();
+//saveNewUser(userT, passwordT);
+//authenticateUser(userT, passwordT);
+//if(updateRoot(senha)) escreveCaracterL1(success);
+//EEPROM_Read_Block(0x40, read, 8);
+//saveNewUser(userT, passwordT);
+//if (authenticateUser(buf, buf02)) {
+//    escreveCaracterL1(success);
+//} else {
+//    escreveCaracterL1(invalid);
+//}
 
     //**********************************
     while (1); //loop infinito          
@@ -178,14 +214,13 @@ void addUser(char x) {
     }
 }
 
-void addPassword(char x) {
-    password[position_password] = x;
+void addPassword(char x){
+    passwordG[position_password] = x;
     position_password++;
     if (position_password == 6) {
         position_password = 0;
         position_user = 0;
-        escreveCaracterL2(limpa);
-        if (authenticateUser(userG, password)) {
+        if (authenticateUser(userG, passwordG)) {
             PORTCbits.RC0 = 1;
             escreveCaracterL1(success);
             delay();
